@@ -412,11 +412,17 @@
       border-radius: 4px;
       overflow: hidden;
       transition: border-color 0.2s, transform 0.2s;
+      display: block;
     }
 
     .project-card:hover {
       border-color: var(--green-light);
       transform: translateY(-2px);
+    }
+
+    a.project-featured:hover .project-featured-visual img {
+      opacity: 1;
+      transition: opacity 0.3s;
     }
 
     .project-card-visual {
@@ -770,13 +776,7 @@
         TO ADD IMAGE: replace the .hero-project-no-img div below with:
         <img src="images/meridian-hero.jpg" alt="The Berm / Meridian Building" style="width:100%;height:280px;object-fit:cover;display:block;">
       -->
-      <div class="hero-project-no-img" style="height:280px;display:flex;align-items:center;justify-content:center;">
-        <div style="text-align:center;">
-          <p style="font-size:11px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:6px;">Featured Project</p>
-          <p style="font-size:15px;color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:0.05em;">The Berm / Meridian Building</p>
-          <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:4px;letter-spacing:0.1em;">Portsmouth Waterfront · 2026</p>
-        </div>
-      </div>
+      <img src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building" style="width:100%;height:280px;object-fit:cover;display:block;filter:brightness(0.85);">
       <div class="hero-project-label">
         <strong>The Berm / Meridian Building</strong>
         <span>Major Project · 2026</span>
@@ -791,26 +791,23 @@
   <h2 class="section-title">Projects</h2>
 
   <!-- FEATURED: Berm/Meridian -->
-  <div class="project-featured">
+  <a href="meridian.html" class="project-featured" style="text-decoration:none;display:grid;grid-template-columns:1fr 1fr;background:var(--green);border-radius:6px;overflow:hidden;margin-bottom:32px;min-height:420px;">
     <div class="project-featured-visual">
       <!--
         TO ADD IMAGE: replace the div below with:
         <img src="images/meridian-render.jpg" alt="The Berm / Meridian Building exterior render">
       -->
-      <div class="project-visual-placeholder">
-        <p class="vis-label">Exterior Render</p>
-        <p class="vis-name">The Berm / Meridian Building</p>
-      </div>
+      <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="The Berm / Meridian Building exterior render" style="width:100%;height:100%;min-height:420px;object-fit:cover;position:absolute;inset:0;opacity:0.85;">
     </div>
     <div class="project-featured-info">
       <p class="section-label">Major Project · Portsmouth · 2026</p>
       <h3>The Berm /&nbsp;Meridian Building</h3>
       <p>
         A civic maritime hub on Portsmouth's southern waterfront, designed to give back more than it takes.
-        Three marine environmental charities — Blue Marine Foundation, the Marine Conservation Society,
-        and Hampshire &amp; Isle of Wight Wildlife Trust — curate public galleries above a shared research
-        workshop, wet lab, and internal dock. The research conducted below feeds directly into the
-        exhibitions above. A restaurant, cafe, lecture theatre, and residential apartments complete a
+        Three marine environmental charities (Blue Marine Foundation, the Marine Conservation Society,
+        and Hampshire &amp; Isle of Wight Wildlife Trust) occupy public galleries set alongside a shared research
+        workshop, wet lab, and internal dock, so visitors can observe active research directly.
+        A restaurant, cafe, lecture theatre, and residential apartments complete a
         building that reads as landscape before it reads as architecture.
       </p>
       <div class="project-tags">
@@ -823,43 +820,43 @@
         <span class="tag">Corten Steel</span>
       </div>
     </div>
-  </div>
+  </a>
 
   <!-- OTHER PROJECTS -->
   <div class="projects-grid">
 
-    <div class="project-card">
+    <a href="barnsbury.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-1">
-        <!-- <img src="images/nursery.jpg" alt="Barnsbury Park Nursery"> -->
+        <img src="barnsbury-imgs/page-1.png" alt="Barnsbury Park Nursery">
       </div>
       <div class="project-card-content">
         <p class="section-label">November 2024</p>
         <h3>Barnsbury Park Nursery</h3>
         <p>A community nursery exploring child-centred spatial design within an existing urban park, balancing shelter, openness, and the scale of young users.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card">
+    <a href="refugee.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-2">
-        <!-- <img src="images/refugee-hub.jpg" alt="Refugee Hub"> -->
+        <img src="refugee-imgs/page-3.png" alt="Refugee Hub">
       </div>
       <div class="project-card-content">
         <p class="section-label">May 2025</p>
         <h3>Refugee Hub</h3>
         <p>A community centre providing shelter, shared space, and social infrastructure for displaced communities — architecture grounded in dignity and belonging.</p>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card">
+    <a href="old-portsmouth.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-3">
-        <!-- <img src="images/old-portsmouth.jpg" alt="Old Portsmouth Project"> -->
+        <img src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth Project">
       </div>
       <div class="project-card-content">
         <p class="section-label">March 2026</p>
         <h3>Old Portsmouth</h3>
-        <p>An urban design intervention engaging with the layered historical identity of Old Portsmouth — working within a sensitive heritage context to propose new civic space.</p>
+        <p>Phase 1 of the major project, completed as a team exercise. Taking a leadership role, Conrad interpreted the brief, organised the group's workflow, and guided key design decisions across a masterplan for Old Portsmouth, proposing selective removals to release the waterfront for public use. The work directly informed the solo Phase 2 building design.</p>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -873,24 +870,28 @@
       <h2 class="section-title">Buildings that belong to where they are</h2>
       <p class="manifesto">
         I'm a Part I architecture graduate from the University of Portsmouth, currently seeking my first
-        professional position. My work starts with the ground — with a site's history, climate, and social
-        context — before anything is drawn.
+        position in practice. Architecture, to me, is the discipline that takes what must exist and asks
+        what it could become. I want to make places people choose to go to, spaces that don't require
+        money to be enjoyed.
       </p>
       <p>
-        The Berm/Meridian Building, my major project, is a civic maritime hub on Portsmouth's southern
-        waterfront. It places a working marine research facility at its operational heart, with public
-        galleries above displaying the research conducted below. The building is designed to earn its
-        place on a historically sensitive waterfront by giving back more than it takes.
+        The Berm/Meridian Building, my major project, is a civic maritime hub on The Hard, Portsmouth's
+        southern waterfront. A working marine research workshop and internal dock sit alongside public
+        galleries curated by three marine environmental charities, so the public can observe active
+        research directly. The building is designed to earn its place on a historically sensitive
+        waterfront by giving back more than it takes. TEST TEST TEST
       </p>
       <p>
-        I believe architecture is a long argument made in material — one that continues long after the
+        I believe architecture is a long argument made in material, one that continues long after the
         architect has left. I try to make buildings that are honest about that: materials drawn from
         their context, programmes that serve more than their clients.
       </p>
       <p>
-        Outside of practice, my dissertation explored public perception of Brutalism through the lens
-        of Portsmouth's demolished Tricorn Centre. The research was accompanied by a triptych of abstract
-        paintings — combining academic analysis with creative practice.
+        My dissertation examined public perception of Brutalism through Portsmouth's demolished Tricorn
+        Centre, arguing that its failure was not architectural but the product of sustained neglect and
+        hostile media framing. It reflects something I think about more broadly: how narrative shapes
+        the reception of a place, and why demolition is so often a response to neglect rather than
+        to design.
       </p>
     </div>
 
@@ -917,9 +918,9 @@
       <div class="about-block">
         <h4>Experience &amp; Practice</h4>
         <ul>
-          <li>Major Project Phase 1 &amp; 2 (RIBA Stages 0–3)</li>
-          <li>Current Works Design Studio (LLP, est. 2026)</li>
-          <li>Structural, environmental &amp; regulatory design integration</li>
+          <li>Major Project: Phase 1 (team masterplan) and Phase 2 (solo building), RIBA Stages 0–3</li>
+          <li>Current Works Design Studio (hypothetical LLP practice, module exercise, 2026)</li>
+          <li>Document controller role within studio group practice</li>
         </ul>
       </div>
 
@@ -950,7 +951,7 @@
         By 2001 it was voted the ugliest building in the country. It was demolished in 2004.
       </p>
       <p>
-        This dissertation investigates why — and argues that the Tricorn's failure was not inherent to
+        This dissertation investigates why. It argues that the Tricorn's failure was not inherent to
         its Brutalist architecture, but the result of poor siting, long-term neglect, and the cumulative
         effect of hostile media framing. Drawing on archival newspaper research at Portsmouth History
         Centre, the study reconstructs how public hatred was gradually constructed over decades, until

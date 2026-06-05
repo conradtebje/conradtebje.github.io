@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barnsbury Park Nursery — Conrad Tebje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:        #1e3d28;
+      --green-mid:    #2d5436;
+      --green-light:  #4a7a5a;
+      --green-pale:   #d6e8db;
+      --rust:         #a85c1a;
+      --rust-light:   #c97a3a;
+      --white:        #f6f4ef;
+      --grey:         #e8e5de;
+      --grey-mid:     #c8c5be;
+      --dark:         #181818;
+      --mid:          #4a4a4a;
+      --light-text:   #7a7a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-back {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: white; }
+    .nav-back::before { content: '←'; font-size: 14px; }
+
+    .nav-logo {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .project-hero {
+      min-height: 70vh;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 48px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .project-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--rust-light);
+    }
+
+    .project-hero h1 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      color: white;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .project-hero-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .meta-item span:first-child {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .meta-item span:last-child {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ─── SHARED ─── */
+    .section { padding: 80px 48px; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+    }
+
+    h2.section-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview-section { background: white; }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .overview-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+
+    .overview-text p:first-of-type {
+      font-size: 17px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .project-facts {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--grey);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--grey);
+      gap: 16px;
+    }
+    .fact-row:last-child { border-bottom: none; }
+
+    .fact-row dt {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .fact-row dd {
+      font-size: 13px;
+      color: var(--dark);
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 16px 20px;
+      background: var(--grey);
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--grey-mid);
+      color: var(--mid);
+      border-radius: 2px;
+    }
+
+    /* ─── PDF PAGES / GALLERY ─── */
+    .pages-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .pages-section .pages-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .pages-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+    .pages-section .section-label::before { background: rgba(255,255,255,0.4); }
+    .pages-section h2.section-title { color: white; }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .pages-grid img {
+      width: 100%;
+      display: block;
+    }
+
+    .pages-grid img.full-width {
+      grid-column: span 2;
+    }
+
+    /* ─── DESIGN FEATURES ─── */
+    .features-section { background: var(--grey); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-item {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .feature-item-text {
+      padding: 20px 22px 24px;
+    }
+
+    .feature-item-text h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-item-text p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: white; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .project-hero { padding: 56px 24px 48px; }
+      .section { padding: 56px 24px; }
+      .pages-section .pages-header { padding: 0 24px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .pages-grid { grid-template-columns: 1fr; }
+      .pages-grid img.full-width { grid-column: span 1; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-back">Portfolio</a>
+  <a href="index.html" class="nav-logo">Conrad Tebje</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="project-hero">
+  <img class="hero-bg-img" src="barnsbury-imgs/page-1.png" alt="Barnsbury Park Nursery">
+  <div class="project-hero-content">
+    <p class="project-tag">Nursery Design &nbsp;·&nbsp; November 2024</p>
+    <h1>Barnsbury Park<br>Nursery</h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span>Location</span>
+        <span>Barnsbury Park, Eastney, Portsmouth</span>
+      </div>
+      <div class="meta-item">
+        <span>Year</span>
+        <span>2024</span>
+      </div>
+      <div class="meta-item">
+        <span>Type</span>
+        <span>Education / Community</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="section overview-section">
+  <div class="overview-grid">
+
+    <div class="overview-text">
+      <p class="section-label">Overview</p>
+      <p>
+        A new nursery within Barnsbury Park, Eastney — a low-rise timber-clad building
+        sized for children rather than adults. The brief demanded spaces that respond to
+        how young children actually move, perceive, and inhabit space, drawing on Montessori
+        and Waldorf Steiner pedagogy as design frameworks.
+      </p>
+      <p>
+        Three sites within the park were assessed before settling on the northern edge,
+        which offered good access from Eastney Road bus stops, sufficient separation from
+        the odour of the Eastney Pumping Station, and proximity to mature trees providing
+        natural shade and a backdrop to the outdoor play areas.
+      </p>
+      <p>
+        The building is organised as a low, C-shaped plan with connected rooms flowing
+        into each other rather than separated by closed doors. Rooms are sized and
+        detailed for their specific age group: baby area, nappy change, toddler space,
+        preschooler room. A first-floor outdoor play deck extends the usable area
+        without increasing the footprint.
+      </p>
+      <p>
+        Portholes in the boundary wall are placed at child height, giving children
+        their own relationship with the street. Large indoor-outdoor zones, nooks sized
+        for hiding, and a raised platform within the main play space create spatial variety
+        without ornament.
+      </p>
+    </div>
+
+    <div>
+      <dl class="project-facts">
+        <div class="fact-row">
+          <dt>Location</dt>
+          <dd>Barnsbury Park, Eastney, Portsmouth</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Year</dt>
+          <dd>November 2024</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Programme</dt>
+          <dd>Baby, Toddler &amp; Preschooler areas, Staff facilities, Outdoor play</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Storeys</dt>
+          <dd>Ground + First floor</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Pedagogy</dt>
+          <dd>Montessori, Waldorf Steiner</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Software</dt>
+          <dd>SketchUp, AutoCAD, Adobe Suite</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Site</dt>
+          <dd>Site 3 (north edge, adjacent to Glasgow Road)</dd>
+        </div>
+      </dl>
+      <div class="tags-row">
+        <span class="tag">Education</span>
+        <span class="tag">Community</span>
+        <span class="tag">Child-Centred</span>
+        <span class="tag">Timber</span>
+        <span class="tag">Montessori</span>
+        <span class="tag">Outdoor Play</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DESIGN FEATURES ── -->
+<section class="section features-section">
+  <p class="section-label">Design</p>
+  <h2 class="section-title">Key Features</h2>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>Portholes at child height</h3>
+        <p>Circular openings in the boundary wall are positioned for children, not adults — giving children their own view onto the street and a sense of ownership over the threshold.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>Connected plan</h3>
+        <p>Rooms flow into each other rather than separating behind closed doors, creating visual communication between spaces and allowing staff to supervise across zones.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>Nooks and hiding spaces</h3>
+        <p>Scaled for children: arched recesses and low-ceilinged alcoves sized to give a sense of enclosure without the anxiety of full separation from the main space.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>Raised play platform</h3>
+        <p>A change in floor level within the main play area creates opportunity for movement, climbing, and spatial exploration without requiring external equipment.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>First-floor outdoor deck</h3>
+        <p>The upper floor extends into a sheltered outdoor play area, separating age groups and doubling the usable external space without increasing the building's footprint.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-item-text">
+        <h3>Pastel ground plane</h3>
+        <p>Abstract shapes in muted pastels across the outdoor play surface suggest play without prescribing it — an open-ended prompt rather than a fixed activity zone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECT BOARDS ── -->
+<section class="pages-section">
+  <div class="pages-header">
+    <p class="section-label">Project Boards</p>
+    <h2 class="section-title">Documentation</h2>
+  </div>
+
+  <div class="pages-grid">
+    <img class="full-width" src="barnsbury-imgs/page-1.png" alt="Cover — Barnsbury Nursery">
+    <img src="barnsbury-imgs/page-2.png" alt="Site Analysis">
+    <img src="barnsbury-imgs/page-3.png" alt="Brief Research">
+    <img src="barnsbury-imgs/page-4.png" alt="Site Selection">
+    <img src="barnsbury-imgs/page-5.png" alt="Design Development">
+    <img class="full-width" src="barnsbury-imgs/page-6.png" alt="Technical Drawings — Sections">
+    <img class="full-width" src="barnsbury-imgs/page-7.png" alt="Technical Drawings — Plans and Elevations">
+    <img class="full-width" src="barnsbury-imgs/page-8.png" alt="Design Features — Exterior">
+    <img class="full-width" src="barnsbury-imgs/page-9.png" alt="Design Features — Interior">
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
+  <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>

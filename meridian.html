@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Berm / Meridian Building — Conrad Tebje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:        #1e3d28;
+      --green-mid:    #2d5436;
+      --green-light:  #4a7a5a;
+      --green-pale:   #d6e8db;
+      --rust:         #a85c1a;
+      --rust-light:   #c97a3a;
+      --white:        #f6f4ef;
+      --grey:         #e8e5de;
+      --grey-mid:     #c8c5be;
+      --dark:         #181818;
+      --mid:          #4a4a4a;
+      --light-text:   #7a7a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-back {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: white; }
+    .nav-back::before { content: '←'; font-size: 14px; }
+
+    .nav-logo {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .project-hero {
+      min-height: 85vh;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 48px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .project-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--rust-light);
+    }
+
+    .project-hero h1 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      color: white;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .project-hero-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-item span:first-child {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .meta-item span:last-child {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ─── SHARED ─── */
+    .section {
+      padding: 80px 48px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+    }
+
+    h2.section-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview-section {
+      background: white;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .overview-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+
+    .overview-text p:first-of-type {
+      font-size: 17px;
+      color: var(--dark);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .project-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--grey);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--grey);
+      gap: 16px;
+    }
+    .fact-row:last-child { border-bottom: none; }
+
+    .fact-row dt {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .fact-row dd {
+      font-size: 13px;
+      color: var(--dark);
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 16px 20px;
+      background: var(--grey);
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--grey-mid);
+      color: var(--mid);
+      border-radius: 2px;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      background: var(--grey);
+      padding: 80px 0;
+    }
+
+    .gallery-section .gallery-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .gallery-full {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .gallery-full img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    .gallery-pair img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 16px 48px 0;
+      font-size: 12px;
+      color: var(--light-text);
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CONCEPT ─── */
+    .concept-section {
+      background: white;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .concept-text p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 18px;
+    }
+
+    .concept-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .concept-images img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .concept-images img.wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
+    /* ─── DRAWINGS ─── */
+    .drawings-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .drawings-section .drawings-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .drawings-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+    .drawings-section .section-label::before {
+      background: rgba(255,255,255,0.4);
+    }
+    .drawings-section h2.section-title {
+      color: white;
+    }
+
+    .drawings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .drawings-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.95);
+    }
+
+    .drawings-grid img.span2 {
+      grid-column: span 2;
+      aspect-ratio: 8/3;
+    }
+
+    .drawings-grid img.span3 {
+      grid-column: span 3;
+      aspect-ratio: 3/1;
+    }
+
+    .drawings-caption {
+      padding: 16px 48px 0;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── INTERIORS ─── */
+    .interiors-section {
+      background: var(--white);
+    }
+
+    .interiors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+    }
+
+    .interiors-grid img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .interiors-grid img.wide {
+      grid-column: span 2;
+      height: 400px;
+    }
+
+    /* ─── MATERIALS ─── */
+    .materials-section {
+      background: var(--grey);
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .material-card {
+      background: white;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .material-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .material-card-label {
+      padding: 12px 14px;
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: white; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .project-hero { padding: 56px 24px 48px; }
+      .section { padding: 56px 24px; }
+      .gallery-section .gallery-header { padding: 0 24px; }
+      .drawings-section .drawings-header { padding: 0 24px; }
+      .drawings-caption { padding: 12px 24px 0; }
+      .gallery-caption { padding: 12px 24px 0; }
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-strip { grid-template-columns: 1fr 1fr; }
+      .drawings-grid { grid-template-columns: 1fr 1fr; }
+      .drawings-grid img.span3 { grid-column: span 2; }
+      .interiors-grid img.wide { height: 260px; }
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-strip { grid-template-columns: 1fr; }
+      .gallery-pair { grid-template-columns: 1fr; }
+      .interiors-grid { grid-template-columns: 1fr; }
+      .interiors-grid img.wide { grid-column: span 1; }
+      .concept-images { grid-template-columns: 1fr; }
+      .concept-images img.wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-back">Portfolio</a>
+  <a href="index.html" class="nav-logo">Conrad Tebje</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="project-hero">
+  <img class="hero-bg-img" src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building exterior">
+  <div class="project-hero-content">
+    <p class="project-tag">Major Project &nbsp;·&nbsp; Phase 2 &nbsp;·&nbsp; Solo Building</p>
+    <h1>The Berm /<br>Meridian Building</h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span>Location</span>
+        <span>The Hard, Portsmouth</span>
+      </div>
+      <div class="meta-item">
+        <span>Year</span>
+        <span>2026</span>
+      </div>
+      <div class="meta-item">
+        <span>RIBA Stages</span>
+        <span>0 – 3</span>
+      </div>
+      <div class="meta-item">
+        <span>Type</span>
+        <span>Civic / Mixed Use</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="section overview-section">
+  <div class="overview-grid">
+
+    <div class="overview-text">
+      <p class="section-label">Overview</p>
+      <p>
+        A civic maritime hub on Portsmouth's southern waterfront, designed to give back more
+        than it takes. The building occupies a historically sensitive site at The Hard, between
+        the naval dockyard and the city — a threshold that has defined Portsmouth's relationship
+        with the sea for centuries.
+      </p>
+      <p>
+        Three marine environmental charities — Blue Marine Foundation, the Marine Conservation
+        Society, and Hampshire &amp; Isle of Wight Wildlife Trust — occupy public galleries set
+        alongside a shared research workshop, wet lab, and internal dock. Visitors can observe
+        active research directly, so the building functions as both attraction and working facility.
+      </p>
+      <p>
+        A restaurant, cafe, lecture theatre, and residential apartments sit above and around the
+        research core. The building reads as landscape before it reads as architecture: a green
+        berm rises from the public realm, sheltering the dock below and forming a continuous
+        accessible roof that connects back to the surrounding city.
+      </p>
+      <p>
+        Materials are drawn from the industrial waterfront: GGBS concrete reduces embodied
+        carbon by over 50%, corten steel ages in reference to the dockyard, and timber
+        surfaces the public interior. Nothing was chosen for effect alone.
+      </p>
+    </div>
+
+    <div>
+      <dl class="project-facts">
+        <div class="fact-row">
+          <dt>Location</dt>
+          <dd>The Hard, Portsmouth</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Phase</dt>
+          <dd>Phase 2 — Solo building</dd>
+        </div>
+        <div class="fact-row">
+          <dt>RIBA Stages</dt>
+          <dd>0 – 3</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Programme</dt>
+          <dd>Marine Research, Galleries, Residential, Hospitality</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Charities</dt>
+          <dd>Blue Marine Foundation, MCS, HIWWT</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Sofware</dt>
+          <dd>SketchUp, V-Ray, AutoCAD, Adobe Suite</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Year</dt>
+          <dd>2026</dd>
+        </div>
+      </dl>
+      <div class="tags-row">
+        <span class="tag">Civic</span>
+        <span class="tag">Mixed Use</span>
+        <span class="tag">Waterfront</span>
+        <span class="tag">Environmental</span>
+        <span class="tag">GGBS Concrete</span>
+        <span class="tag">Corten Steel</span>
+        <span class="tag">Marine Research</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── RENDERS ── -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">Renders</p>
+    <h2 class="section-title">Exterior</h2>
+  </div>
+
+  <div class="gallery-full">
+    <img src="screenshots2/Screenshot 2026-05-31 154414.png" alt="Exterior waterfront view">
+  </div>
+
+  <div class="gallery-strip">
+    <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="Public realm and amphitheatre">
+    <img src="screenshots2/Screenshot 2026-05-31 154432.png" alt="Rooftop view">
+    <img src="screenshots2/Screenshot 2026-05-31 154423.png" alt="Hotel room interior">
+  </div>
+
+  <p class="gallery-caption">From top: waterfront elevation; public realm; rooftop accessible berm; residential apartment</p>
+</section>
+
+<!-- ── INTERIORS ── -->
+<section class="section interiors-section">
+  <p class="section-label">Renders</p>
+  <h2 class="section-title">Interior Spaces</h2>
+
+  <div class="interiors-grid">
+    <img class="wide" src="screenshots2/Screenshot 2026-05-31 154459.png" alt="Cafe and atrium interior">
+    <img src="screenshots2/Screenshot 2026-05-31 154507.png" alt="Boat workshop and internal dock">
+    <img src="screenshots2/Screenshot 2026-05-31 154519.png" alt="Reception">
+    <img src="screenshots2/Screenshot 2026-05-31 154530.png" alt="Bar and social space">
+    <img src="screenshots2/Screenshot 2026-05-31 154540.png" alt="Lecture theatre">
+  </div>
+</section>
+
+<!-- ── CONCEPT ── -->
+<section class="section concept-section">
+  <div class="concept-grid">
+
+    <div class="concept-text">
+      <p class="section-label">Concept &amp; Process</p>
+      <h2 class="section-title">Design Development</h2>
+      <p>
+        The design began with the ground. The berm is not a formal device — it is a response
+        to the flood risk of a waterfront site, the desire to create a continuous public roof,
+        and the need to screen the dock from street-level noise without closing it off.
+      </p>
+      <p>
+        Early process work (sketches, massing studies) focused on the relationship between
+        the research wing and the public galleries. Several configurations were tested before
+        settling on a lateral arrangement that keeps research and exhibition genuinely
+        adjacent — visitors walking past glass can see the workshop below without any barrier
+        framing it as spectacle.
+      </p>
+      <p>
+        The exploded axonometric shows how programme layers: the dock and workshop at the
+        lowest level, the research and gallery floors above, residential and hospitality
+        stepping back on the upper floors, and the berm as a continuous green surface
+        tying everything together from outside.
+      </p>
+    </div>
+
+    <div class="concept-images">
+      <img class="wide" src="screenshots2/Screenshot 2026-06-01 121850.png" alt="Exploded axonometric">
+      <img src="screenshots2/sketch-07.png" alt="Concept sketch">
+      <img src="screenshots2/Screenshot 2026-06-01 122547.png" alt="Office render">
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TECHNICAL DRAWINGS ── -->
+<section class="drawings-section">
+  <div class="drawings-header">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Plans &amp; Sections</h2>
+  </div>
+
+  <div class="drawings-grid">
+    <img src="screenshots2/Screenshot 2026-05-31 154253.png" alt="Site plan">
+    <img src="screenshots2/Screenshot 2026-05-31 154307.png" alt="Ground floor plan">
+    <img src="screenshots2/Screenshot 2026-05-31 154320.png" alt="First floor plan">
+    <img src="screenshots2/Screenshot 2026-05-31 154328.png" alt="Second floor plan">
+    <img class="span2" src="screenshots2/Screenshot 2026-05-31 154601.png" alt="Sectional perspective (annotated)">
+    <img class="span3" src="screenshots2/Screenshot 2026-05-31 154402.png" alt="West-facing section">
+    <img class="span3" src="screenshots2/section_north.png" alt="North-facing section">
+  </div>
+
+  <p class="drawings-caption">Site plan · Ground floor · First floor · Second floor · Sectional perspective · West section · North section</p>
+</section>
+
+<!-- ── ELEVATIONS ── -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Elevations</h2>
+  </div>
+
+  <div class="gallery-full">
+    <img src="screenshots2/Screenshot 2026-05-31 154339.png" alt="South elevation" style="height:380px;object-fit:contain;background:#1a1a1a;">
+  </div>
+  <div class="gallery-pair">
+    <img src="screenshots2/Screenshot 2026-05-31 154345.png" alt="East elevation" style="object-fit:contain;background:#1a1a1a;">
+    <img src="screenshots2/Screenshot 2026-05-31 154231.png" alt="Additional elevation" style="object-fit:contain;background:#1a1a1a;">
+  </div>
+
+  <p class="gallery-caption">South elevation · East elevation</p>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="section concept-section">
+  <p class="section-label">Process</p>
+  <h2 class="section-title">Site &amp; Development</h2>
+
+  <div class="concept-images" style="grid-template-columns: repeat(4,1fr); gap: 12px;">
+    <img src="screenshots/process_01-23.png" alt="Process 01" style="aspect-ratio:1; grid-column:auto;">
+    <img src="screenshots/process_02-25.png" alt="Process 02" style="aspect-ratio:1; grid-column:auto;">
+    <img src="screenshots/process_03-30.png" alt="Process 03" style="aspect-ratio:1; grid-column:auto;">
+    <img src="screenshots/process_04-33.png" alt="Process 04" style="aspect-ratio:1; grid-column:auto;">
+  </div>
+</section>
+
+<!-- ── MATERIALS ── -->
+<section class="section materials-section">
+  <p class="section-label">Materials</p>
+  <h2 class="section-title">Palette</h2>
+
+  <div class="materials-grid">
+    <div class="material-card">
+      <img src="screenshots/mat_corten.png" alt="Corten steel">
+      <div class="material-card-label">Corten Steel</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_ggbs.png" alt="GGBS concrete">
+      <div class="material-card-label">GGBS Concrete</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_decking.png" alt="Timber decking">
+      <div class="material-card-label">Timber Decking</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_green.png" alt="Green roof">
+      <div class="material-card-label">Green Roof</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_timber_d.png" alt="Dark timber">
+      <div class="material-card-label">Dark Timber</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_timber_l.png" alt="Light timber">
+      <div class="material-card-label">Light Timber</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_polished.png" alt="Polished concrete">
+      <div class="material-card-label">Polished Concrete</div>
+    </div>
+    <div class="material-card">
+      <img src="screenshots/mat_soffit.png" alt="Soffit finish">
+      <div class="material-card-label">Exposed Soffit</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
+  <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>

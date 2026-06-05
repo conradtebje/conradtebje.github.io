@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refugee Hub — Conrad Tebje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:        #1e3d28;
+      --green-mid:    #2d5436;
+      --green-light:  #4a7a5a;
+      --rust:         #a85c1a;
+      --rust-light:   #c97a3a;
+      --white:        #f6f4ef;
+      --grey:         #e8e5de;
+      --grey-mid:     #c8c5be;
+      --dark:         #181818;
+      --mid:          #4a4a4a;
+      --light-text:   #7a7a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-back {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: white; }
+    .nav-back::before { content: '←'; font-size: 14px; }
+
+    .nav-logo {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .project-hero {
+      min-height: 70vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 48px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .project-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--rust-light);
+    }
+
+    .project-hero h1 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      color: white;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .project-hero-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .meta-item span:first-child {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .meta-item span:last-child {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ─── SHARED ─── */
+    .section { padding: 80px 48px; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+    }
+
+    h2.section-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview-section { background: white; }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .overview-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+
+    .overview-text p:first-of-type {
+      font-size: 17px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .project-facts {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--grey);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--grey);
+      gap: 16px;
+    }
+    .fact-row:last-child { border-bottom: none; }
+
+    .fact-row dt {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .fact-row dd {
+      font-size: 13px;
+      color: var(--dark);
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 16px 20px;
+      background: var(--grey);
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--grey-mid);
+      color: var(--mid);
+      border-radius: 2px;
+    }
+
+    /* ─── NARRATIVE ─── */
+    .narrative-section { background: var(--grey); }
+
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .narrative-text p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 18px;
+    }
+
+    .narrative-quote {
+      border-left: 2px solid var(--rust);
+      padding-left: 24px;
+      margin: 32px 0;
+    }
+
+    .narrative-quote p {
+      font-size: 15px;
+      color: var(--dark);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .charities {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .charity-item {
+      padding: 16px 20px;
+      background: white;
+      border-radius: 4px;
+      border-left: 3px solid var(--rust);
+    }
+
+    .charity-item h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .charity-item p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ─── PAGES / BOARDS ─── */
+    .pages-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .pages-section .pages-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .pages-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+    .pages-section .section-label::before { background: rgba(255,255,255,0.4); }
+    .pages-section h2.section-title { color: white; }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .pages-grid img {
+      width: 100%;
+      display: block;
+    }
+
+    .pages-grid img.full-width {
+      grid-column: span 2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: white; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .project-hero { padding: 56px 24px 48px; }
+      .section { padding: 56px 24px; }
+      .pages-section .pages-header { padding: 0 24px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .narrative-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .pages-grid { grid-template-columns: 1fr; }
+      .pages-grid img.full-width { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-back">Portfolio</a>
+  <a href="index.html" class="nav-logo">Conrad Tebje</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="project-hero">
+  <img class="hero-bg-img" src="refugee-imgs/page-3.png" alt="Refugee Hub">
+  <div class="project-hero-content">
+    <p class="project-tag">Community Design &nbsp;·&nbsp; May 2025</p>
+    <h1>Refugee Hub</h1>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <span>Location</span>
+        <span>Portsmouth City Centre</span>
+      </div>
+      <div class="meta-item">
+        <span>Year</span>
+        <span>2025</span>
+      </div>
+      <div class="meta-item">
+        <span>Type</span>
+        <span>Community / Residential</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="section overview-section">
+  <div class="overview-grid">
+
+    <div class="overview-text">
+      <p class="section-label">Overview</p>
+      <p>
+        A community centre and temporary residence for families fleeing conflict, sited within
+        Portsmouth city centre. The building is conceived as an oasis — a place of sanctuary
+        at the end of a long and hard journey, designed around the emotional and physical
+        needs of people who have lost homes, possessions, and in many cases family members.
+      </p>
+      <p>
+        The plan organises around a central courtyard, with the building wrapping its
+        surrounding context and flowing downward to a sheltered ground level. A long corridor
+        housing an art installation runs the length of the public-facing elevation: its
+        repeating undulating arches reference the journey users have made to arrive here,
+        drawing from the staggered arch corridor at Exeter College Cohen Quad by Alison
+        Brooks Architects.
+      </p>
+      <p>
+        Gathering spaces — the classroom, cafeteria, and dining room — face south to take
+        full advantage of available sunlight. The residential block occupies the quietest
+        point in the site, with private rooms connecting back to the shared facilities
+        through reception and storage. The building gives privacy where it's needed
+        and community where it can be found.
+      </p>
+      <p>
+        Materials are warm and durable: stone, brick, timber. Colours were drawn from
+        earth tones — ochres, terracottas, deep greens — to create an interior
+        that feels rooted rather than temporary.
+      </p>
+    </div>
+
+    <div>
+      <dl class="project-facts">
+        <div class="fact-row">
+          <dt>Location</dt>
+          <dd>Portsmouth City Centre</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Year</dt>
+          <dd>May 2025</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Programme</dt>
+          <dd>Cafeteria, Classroom, Day-Care, Prayer Room, Residences, Courtyard, Hall</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Client</dt>
+          <dd>Families displaced by conflict</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Partners</dt>
+          <dd>Portsmouth City of Sanctuary, Connors Toy Library, Children's Legal Centre</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Software</dt>
+          <dd>SketchUp, AutoCAD, Adobe Suite</dd>
+        </div>
+      </dl>
+      <div class="tags-row">
+        <span class="tag">Community</span>
+        <span class="tag">Sanctuary</span>
+        <span class="tag">Residential</span>
+        <span class="tag">Courtyard</span>
+        <span class="tag">Social Infrastructure</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── NARRATIVE ── -->
+<section class="section narrative-section">
+  <div class="narrative-grid">
+
+    <div class="narrative-text">
+      <p class="section-label">Narrative &amp; Concept</p>
+      <h2 class="section-title">Architecture as Sanctuary</h2>
+      <p>
+        The design began with a mapping exercise — visually representing the emotional and
+        physical journey of a refugee: forced departure, loss of home and identity, the
+        long displacement, arrival. Inspired by Francis Alÿs' <em>Sometimes Making Something
+        Leads to Nothing</em>, this map was translated into a physical model tracing the
+        erosion of identity along the way, while showing how roots can grow again.
+      </p>
+
+      <div class="narrative-quote">
+        <p>The building is not just shelter. It is an argument that arriving somewhere new
+        does not mean starting from nothing.</p>
+      </div>
+
+      <p>
+        Spatial transitions — from concrete to wood, from public to private — are used to
+        reflect the journey narrative. Entry through the arch corridor is public and
+        processional. The courtyard beyond is quieter, contained, somewhere to stop.
+        The residential rooms beyond that are private.
+      </p>
+      <p>
+        The first design iteration was too large and too abstract. Subsequent iterations
+        focused the building on the lived experience of its users, reducing scale,
+        improving solar orientation, and anchoring the residential block at the quietest
+        part of the site away from road noise.
+      </p>
+    </div>
+
+    <div class="charities">
+      <h4 style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-mid);margin-bottom:16px;">Supporting Organisations</h4>
+
+      <div class="charity-item">
+        <h4>Portsmouth City of Sanctuary</h4>
+        <p>Direct action and compassionate support for people fleeing conflict and persecution.</p>
+      </div>
+
+      <div class="charity-item">
+        <h4>Connors Toy Library</h4>
+        <p>A community space where families and children meet, make friends, and integrate into the city.</p>
+      </div>
+
+      <div class="charity-item">
+        <h4>Coram Children's Legal Centre</h4>
+        <p>Legal advice and support ensuring children's rights are protected while they are in England.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROJECT BOARDS ── -->
+<section class="pages-section">
+  <div class="pages-header">
+    <p class="section-label">Project Boards</p>
+    <h2 class="section-title">Documentation</h2>
+  </div>
+
+  <div class="pages-grid">
+    <img class="full-width" src="refugee-imgs/page-1.png" alt="Narrative and precedent research">
+    <img class="full-width" src="refugee-imgs/page-2.png" alt="Site Analysis">
+    <img class="full-width" src="refugee-imgs/page-3.png" alt="Design Progression">
+    <img class="full-width" src="refugee-imgs/page-4.png" alt="Technical Drawings — Cafeteria and Sections">
+    <img class="full-width" src="refugee-imgs/page-5.png" alt="Technical Drawings — Plans and Courtyard">
+    <img class="full-width" src="refugee-imgs/page-6.png" alt="Technical Drawings — Arches and Elevations">
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
+  <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>
