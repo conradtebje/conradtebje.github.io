@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conrad Tebje — Part I Architect</title>
+  <title>Conrad Tebje - Part I Architect</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,6 +77,9 @@
     .hero {
       min-height: 100vh;
       background: var(--green);
+      background-image: url('screenshots2/Screenshot 2026-05-31 154451.png');
+      background-size: cover;
+      background-position: center;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: end;
@@ -84,6 +87,21 @@
       padding-top: 56px;
       position: relative;
       overflow: hidden;
+    }
+
+    /* dark overlay for text legibility */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(20, 45, 28, 0.82) 0%,
+        rgba(20, 45, 28, 0.55) 50%,
+        rgba(20, 45, 28, 0.25) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* subtle grid overlay */
@@ -101,7 +119,7 @@
     .hero-left {
       padding-bottom: 0;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero-tag {
@@ -179,7 +197,7 @@
 
     .hero-right {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -196,7 +214,7 @@
       overflow: hidden;
     }
 
-    /* Meridian render placeholder — replace src with actual render */
+    /* Meridian render placeholder - replace src with actual render */
     .hero-project-preview img {
       width: 100%;
       height: 280px;
@@ -420,6 +438,15 @@
       transform: translateY(-2px);
     }
 
+    a.project-featured {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.project-featured:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 2px var(--green-light);
+    }
+
     a.project-featured:hover .project-featured-visual img {
       opacity: 1;
       transition: opacity 0.3s;
@@ -584,6 +611,32 @@
       padding: 12px;
       position: relative;
       overflow: hidden;
+      background: #1a1a1a;
+      cursor: zoom-in;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .triptych-panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 2px var(--green-light);
+    }
+
+    .triptych-panel img.painting {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .triptych-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      pointer-events: none;
     }
 
     .triptych-panel span {
@@ -593,22 +646,12 @@
       font-weight: 500;
       position: relative;
       z-index: 1;
+      color: rgba(255,255,255,0.8);
     }
 
-    .tp-1 {
-      background: linear-gradient(160deg, #c97a3a 0%, #8b5e2a 40%, #6b6b5a 100%);
-    }
-    .tp-1 span { color: rgba(255,255,255,0.75); }
-
-    .tp-2 {
-      background: linear-gradient(160deg, #3a3a3a 0%, #5a5a58 60%, #6a6a60 100%);
-    }
-    .tp-2 span { color: rgba(255,255,255,0.6); }
-
-    .tp-3 {
-      background: linear-gradient(160deg, #c8c7c0 0%, #a8a7a0 60%, #888880 100%);
-    }
-    .tp-3 span { color: rgba(0,0,0,0.4); }
+    .tp-1 {}
+    .tp-2 {}
+    .tp-3 {}
 
     .triptych-caption {
       font-size: 12px;
@@ -763,26 +806,13 @@
   <div class="hero-left">
     <p class="hero-tag">Part I Assistant Architect &nbsp;·&nbsp; Portsmouth &nbsp;·&nbsp; 2026</p>
     <h1 class="hero-name">Conrad<br>Tebje</h1>
-    <p class="hero-quote">Architecture that belongs to more than its owner. test</p>
+    <p class="hero-quote">Architecture that belongs to more than its owner.</p>
     <div class="hero-actions">
       <a href="#projects" class="btn btn-rust">View Work</a>
       <a href="#contact" class="btn btn-ghost">Get in Touch</a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-project-preview">
-      <!--
-        TO ADD IMAGE: replace the .hero-project-no-img div below with:
-        <img src="images/meridian-hero.jpg" alt="The Berm / Meridian Building" style="width:100%;height:280px;object-fit:cover;display:block;">
-      -->
-      <img src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building" style="width:100%;height:280px;object-fit:cover;display:block;filter:brightness(0.85);">
-      <div class="hero-project-label">
-        <strong>The Berm / Meridian Building</strong>
-        <span>Major Project · 2026</span>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ── PROJECTS ── -->
@@ -797,7 +827,7 @@
         TO ADD IMAGE: replace the div below with:
         <img src="images/meridian-render.jpg" alt="The Berm / Meridian Building exterior render">
       -->
-      <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="The Berm / Meridian Building exterior render" style="width:100%;height:100%;min-height:420px;object-fit:cover;position:absolute;inset:0;opacity:0.85;">
+      <img src="meridian-imgs/waterfront.jpg" alt="The Berm / Meridian Building exterior render" style="width:100%;height:100%;min-height:420px;object-fit:cover;position:absolute;inset:0;opacity:0.85;">
     </div>
     <div class="project-featured-info">
       <p class="section-label">Major Project · Portsmouth · 2026</p>
@@ -827,7 +857,7 @@
 
     <a href="barnsbury.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-1">
-        <img src="barnsbury-imgs/page-1.png" alt="Barnsbury Park Nursery">
+        <img src="barnsbury-imgs/axo-v2.jpg" alt="Barnsbury Park Nursery">
       </div>
       <div class="project-card-content">
         <p class="section-label">November 2024</p>
@@ -838,23 +868,23 @@
 
     <a href="refugee.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-2">
-        <img src="refugee-imgs/page-3.png" alt="Refugee Hub">
+        <img src="refugee-imgs/interior-colonnade.jpg" alt="Refugee Hub">
       </div>
       <div class="project-card-content">
         <p class="section-label">May 2025</p>
         <h3>Refugee Hub</h3>
-        <p>A community centre providing shelter, shared space, and social infrastructure for displaced communities — architecture grounded in dignity and belonging.</p>
+        <p>A community centre providing shelter, shared space, and social infrastructure for displaced communities - architecture grounded in dignity and belonging.</p>
       </div>
     </a>
 
     <a href="old-portsmouth.html" class="project-card" style="text-decoration:none;color:inherit;">
       <div class="project-card-visual card-vis-3">
-        <img src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth Project">
+        <img src="oldports-imgs/model-sideangle.jpg" alt="Old Portsmouth Project" style="object-position: center top;">
       </div>
       <div class="project-card-content">
         <p class="section-label">March 2026</p>
         <h3>Old Portsmouth</h3>
-        <p>Phase 1 of the major project, completed as a team exercise. Taking a leadership role, Conrad interpreted the brief, organised the group's workflow, and guided key design decisions across a masterplan for Old Portsmouth, proposing selective removals to release the waterfront for public use. The work directly informed the solo Phase 2 building design.</p>
+        <p>Phase 1 of the major project, completed as a team exercise. Taking a leadership role, I interpreted the brief, organised the group's workflow, and guided key design decisions across a masterplan for Old Portsmouth, proposing selective removals to release the waterfront for public use. The work directly informed the solo Phase 2 building design.</p>
       </div>
     </a>
 
@@ -871,7 +901,7 @@
       <p class="manifesto">
         I'm a Part I architecture graduate from the University of Portsmouth, currently seeking my first
         position in practice. Architecture, to me, is the discipline that takes what must exist and asks
-        what it could become. I want to make places people choose to go to, spaces that don't require
+        what it could become. I want to make places people choose to go to - spaces that don't require
         money to be enjoyed.
       </p>
       <p>
@@ -879,7 +909,7 @@
         southern waterfront. A working marine research workshop and internal dock sit alongside public
         galleries curated by three marine environmental charities, so the public can observe active
         research directly. The building is designed to earn its place on a historically sensitive
-        waterfront by giving back more than it takes. TEST TEST TEST
+        waterfront by giving back more than it takes.
       </p>
       <p>
         I believe architecture is a long argument made in material, one that continues long after the
@@ -899,7 +929,7 @@
       <div class="about-block">
         <h4>Education</h4>
         <ul>
-          <li>BA (Hons) Architecture, University of Portsmouth — 2022–2026</li>
+          <li>BA (Hons) Architecture, University of Portsmouth - 2022–2026</li>
           <li>A Level Design (A), Fine Art (B), Economics (C)</li>
         </ul>
       </div>
@@ -966,17 +996,20 @@
 
     <div>
       <div class="triptych">
-        <div class="triptych-panel tp-1">
-          <span>I — Brave New World</span>
+        <div class="triptych-panel tp-1" onclick="openLightbox('personal-imgs/painting-warm.jpg')">
+          <img class="painting" src="personal-imgs/painting-warm.jpg" alt="I - Brave New World">
+          <span>I - Brave New World</span>
         </div>
-        <div class="triptych-panel tp-2">
-          <span>II — Rejection &amp; Rupture</span>
+        <div class="triptych-panel tp-2" onclick="openLightbox('personal-imgs/painting-grey.jpg')">
+          <img class="painting" src="personal-imgs/painting-grey.jpg" alt="II - Rejection &amp; Rupture">
+          <span>II - Rejection &amp; Rupture</span>
         </div>
-        <div class="triptych-panel tp-3">
-          <span>III — Void &amp; Memory</span>
+        <div class="triptych-panel tp-3" onclick="openLightbox('personal-imgs/painting-sketch.jpg')">
+          <img class="painting" src="personal-imgs/painting-sketch.jpg" alt="III - Void &amp; Memory">
+          <span>III - Void &amp; Memory</span>
         </div>
       </div>
-      <p class="triptych-caption">Triptych artefact: acrylic and mixed media, 2026</p>
+      <p class="triptych-caption">Triptych artefact: acrylic on canvas, 2026</p>
     </div>
 
   </div>
@@ -990,7 +1023,7 @@
   <div class="contact-grid">
     <div class="contact-item">
       <h4>Email</h4>
-      <a href="mailto:conradtebje1@gmail.com">conradtebje1@gmail.com</a>
+      <a href="mailto:ctebje.arch@gmail.com">ctebje.arch@gmail.com</a>
     </div>
     <div class="contact-item">
       <h4>Phone</h4>
@@ -999,7 +1032,7 @@
     <div class="contact-item">
       <h4>LinkedIn</h4>
       <!-- UPDATE: replace href with your real LinkedIn URL -->
-      <a href="https://www.linkedin.com/in/conradtebje" target="_blank" rel="noopener">linkedin.com/in/conradtebje</a>
+      <a href="https://www.linkedin.com/in/conrad-tebje" target="_blank" rel="noopener">linkedin.com/in/conrad-tebje</a>
     </div>
     <div class="contact-item">
       <h4>Based in</h4>
@@ -1008,10 +1041,88 @@
   </div>
 </section>
 
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox" style="
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:rgba(10,10,10,0.95);
+  align-items:center; justify-content:center;">
+
+  <button onclick="closeLightbox()" style="
+    position:absolute; top:24px; right:28px;
+    background:none; border:none; cursor:pointer;
+    color:rgba(255,255,255,0.4); font-size:28px; line-height:1;
+    font-family:'Inter',sans-serif;">&#x2715;</button>
+
+  <div style="
+    display:flex; align-items:center; gap:56px;
+    max-width:1100px; width:92vw; padding:0 24px;">
+
+    <img id="lightbox-img" src="" alt="" style="
+      max-height:82vh; max-width:44vw; object-fit:contain; flex-shrink:0;
+      box-shadow:0 12px 48px rgba(0,0,0,0.7);">
+
+    <div style="max-width:380px; flex-shrink:0;">
+      <p id="lightbox-num" style="
+        font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+        color:var(--rust-light); font-family:'Inter',sans-serif;
+        margin-bottom:12px;"></p>
+      <h3 id="lightbox-title" style="
+        font-size:22px; font-weight:600; color:white; letter-spacing:-0.02em;
+        font-family:'Inter',sans-serif; margin-bottom:20px; line-height:1.2;"></h3>
+      <p id="lightbox-desc" style="
+        font-size:14px; line-height:1.8; color:rgba(255,255,255,0.55);
+        font-family:'Inter',sans-serif;"></p>
+      <p style="
+        font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+        color:rgba(255,255,255,0.2); font-family:'Inter',sans-serif;
+        margin-top:28px;">Acrylic on canvas · 2026</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const paintings = {
+    'personal-imgs/painting-warm.jpg': {
+      num: 'Panel I',
+      title: 'Brave New World',
+      desc: 'The first panel depicts the optimism and ambition surrounding the Tricorn\'s inception in the 1960s. Its palette is lighter and warmer, dominated by concrete greys subtly infused with pale yellows and soft oranges - tones that suggest optimism while recalling the lingering atmosphere of post-war reconstruction, the forms appearing almost as if lit by fire or dawn. Compositionally, the panel centres on an abstracted vertical form derived from the Tricorn\'s tower, presented as powerful yet slightly alien. The mood is aspirational but uneasy, reflecting the building\'s original symbolism as a monument to progress that was never fully at ease within its context.'
+    },
+    'personal-imgs/painting-grey.jpg': {
+      num: 'Panel II',
+      title: 'Rejection and Rupture',
+      desc: 'The second panel represents the period of decline and public hostility. The composition continues the building\'s length from Panel I but shifts focus away from the tower toward the car park decks and narrow slit windows - elements most commonly associated with Brutalism\'s perceived severity. The palette is restricted to dense greys, applied thickly to emphasise monotony and visual weight. A fence cuts across the composition, blocking access to the building, with a protest slogan scrawled across it. The panel reflects how the building was reduced to its most criticised features and recast as an obstacle within the city.'
+    },
+    'personal-imgs/painting-sketch.jpg': {
+      num: 'Panel III',
+      title: 'Void and Memory',
+      desc: 'The final panel addresses the aftermath of demolition. Watery, diluted greys create a damp and emptied atmosphere, while the Tricorn recedes into the background behind markings associated with a car park - the site\'s replacement. Faint white outlines trace architectural forms that might have existed, suggesting unrealised potential rather than nostalgia. The tone is quiet and unresolved, presenting demolition not as closure but as interruption and loss - holding the Tricorn in suspension between memory and erasure, mirroring the unresolved nature of its legacy.'
+    }
+  };
+
+  function openLightbox(src) {
+    const data = paintings[src];
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-num').textContent = data.num;
+    document.getElementById('lightbox-title').textContent = data.title;
+    document.getElementById('lightbox-desc').textContent = data.desc;
+    const lb = document.getElementById('lightbox');
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
 <!-- ── FOOTER ── -->
 <footer>
   <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
-  <p>University of Portsmouth — BA (Hons) Architecture</p>
+  <p>University of Portsmouth - BA (Hons) Architecture &nbsp;·&nbsp; &copy; 2026 Conrad Tebje. All rights reserved.</p>
 </footer>
 
 </body>

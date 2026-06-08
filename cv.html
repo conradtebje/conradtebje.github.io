@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Conrad Tebje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:        #1e3d28;
+      --green-mid:    #2d5436;
+      --green-light:  #4a7a5a;
+      --rust:         #a85c1a;
+      --rust-light:   #c97a3a;
+      --white:        #f6f4ef;
+      --grey:         #e8e5de;
+      --grey-mid:     #c8c5be;
+      --dark:         #181818;
+      --mid:          #4a4a4a;
+      --light-text:   #7a7a7a;
+    }
+
+    html { background: #d0cdc6; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 13px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      max-width: 210mm;
+      margin: 32px auto;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+    }
+
+    /* ─── HEADER ─── */
+    .cv-header {
+      background: var(--green);
+      padding: 40px 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cv-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .cv-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .cv-header-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    .cv-header-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--rust-light);
+    }
+
+    .cv-contact-bar {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cv-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cv-contact-item a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cv-contact-item a:hover { color: white; }
+
+    .cv-contact-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--rust);
+      flex-shrink: 0;
+    }
+
+    /* ─── BODY ─── */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: calc(100% - 140px);
+    }
+
+    /* ─── SIDEBAR ─── */
+    .cv-sidebar {
+      background: var(--grey);
+      padding: 36px 24px;
+      border-right: 1px solid var(--grey-mid);
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .sidebar-block h3 {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--grey-mid);
+    }
+
+    /* Education entries */
+    .edu-entry {
+      margin-bottom: 20px;
+    }
+    .edu-entry:last-child { margin-bottom: 0; }
+
+    .edu-dates {
+      font-size: 10px;
+      color: var(--light-text);
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .edu-institution {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .edu-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .edu-items li {
+      font-size: 11.5px;
+      color: var(--mid);
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .edu-items li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+      font-size: 10px;
+    }
+
+    /* Skills */
+    .skill-group {
+      margin-bottom: 16px;
+    }
+    .skill-group:last-child { margin-bottom: 0; }
+
+    .skill-group-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .skill-list li {
+      font-size: 11.5px;
+      color: var(--mid);
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .skill-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--green-light);
+      font-size: 10px;
+    }
+
+    /* Strengths tags */
+    .strengths-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .strength-item {
+      font-size: 11px;
+      color: var(--mid);
+      padding: 5px 8px;
+      background: white;
+      border-radius: 2px;
+      border-left: 2px solid var(--green-light);
+      line-height: 1.35;
+    }
+
+    /* References */
+    .reference-entry {
+      margin-bottom: 14px;
+    }
+    .reference-entry:last-child { margin-bottom: 0; }
+
+    .reference-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .reference-role {
+      font-size: 11px;
+      color: var(--light-text);
+      line-height: 1.4;
+    }
+
+    .reference-note {
+      font-size: 10px;
+      color: var(--light-text);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .cv-main {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .main-section h3 {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--grey);
+    }
+
+    /* Personal Statement */
+    .statement-text {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .statement-text p { margin-bottom: 10px; }
+    .statement-text p:last-child { margin-bottom: 0; }
+
+    /* Experience entries */
+    .exp-entry {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--grey);
+    }
+    .exp-entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      gap: 12px;
+    }
+
+    .exp-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    .exp-year {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--rust);
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .exp-subtitle {
+      font-size: 12px;
+      color: var(--green-mid);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .exp-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .exp-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-point {
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.7;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .exp-point::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+      font-size: 11px;
+    }
+
+    /* Hobbies */
+    .hobbies-text {
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* Other experience */
+    .other-exp-text {
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ─── NAV (screen only) ─── */
+    .cv-nav {
+      background: var(--green);
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      max-width: 210mm;
+      margin: 0 auto;
+    }
+
+    .cv-nav a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cv-nav a:hover { color: white; }
+    .cv-nav a::before { content: '←'; }
+
+    .cv-nav-print {
+      color: rgba(255,255,255,0.6) !important;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .cv-nav-print::before { content: none !important; }
+    .cv-nav-print:hover { color: white !important; }
+
+    /* ─── PRINT ─── */
+    @media print {
+      html { background: white; }
+      body { margin: 0; box-shadow: none; max-width: none; }
+      .cv-nav { display: none; }
+      .cv-body { min-height: 100vh; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Screen-only nav -->
+<nav class="cv-nav">
+  <a href="index.html">Portfolio</a>
+  <button class="cv-nav-print" onclick="window.print()">Print / Save PDF</button>
+</nav>
+
+<!-- ── HEADER ── -->
+<header class="cv-header">
+  <p class="cv-header-tag">Part I Architectural Assistant · 2026</p>
+  <h1>Conrad Tebje</h1>
+  <div class="cv-contact-bar">
+    <div class="cv-contact-item">
+      <span class="cv-contact-dot"></span>
+      Portsmouth, Hampshire
+    </div>
+    <div class="cv-contact-item">
+      <span class="cv-contact-dot"></span>
+      <a href="mailto:conradtebje1@gmail.com">conradtebje1@gmail.com</a>
+    </div>
+    <div class="cv-contact-item">
+      <span class="cv-contact-dot"></span>
+      07526 345 935
+    </div>
+  </div>
+</header>
+
+<!-- ── BODY ── -->
+<div class="cv-body">
+
+  <!-- SIDEBAR -->
+  <aside class="cv-sidebar">
+
+    <div class="sidebar-block">
+      <h3>Education</h3>
+
+      <div class="edu-entry">
+        <p class="edu-dates">Sept 2022 – July 2026</p>
+        <p class="edu-institution">University of Portsmouth</p>
+        <ul class="edu-items">
+          <li>BA (Hons) Architecture</li>
+          <li>EXP 2:1 / First Class</li>
+        </ul>
+      </div>
+
+      <div class="edu-entry">
+        <p class="edu-dates">2020 – 2022</p>
+        <p class="edu-institution">Tring School Sixth Form</p>
+        <ul class="edu-items">
+          <li>Design - A</li>
+          <li>Fine Art - B</li>
+          <li>Economics - C</li>
+        </ul>
+      </div>
+
+      <div class="edu-entry">
+        <p class="edu-dates">2015 – 2020</p>
+        <p class="edu-institution">Tring School</p>
+        <ul class="edu-items">
+          <li>Fine Art - 7</li>
+          <li>Design - 7</li>
+          <li>English Language - 7</li>
+          <li>Mathematics - 7</li>
+          <li>English Literature - 6</li>
+          <li>Combined Science - 6</li>
+          <li>Computer Studies - 6</li>
+          <li>Religious Studies - 5</li>
+          <li>German - 4</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <h3>Skills</h3>
+      <div class="skill-group">
+        <p class="skill-group-label">Technical</p>
+        <ul class="skill-list">
+          <li>SketchUp &amp; V-Ray</li>
+          <li>AutoCAD</li>
+          <li>Adobe Creative Suite</li>
+          <li>Hand sketching &amp; painting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <h3>Strengths</h3>
+      <div class="strengths-list">
+        <div class="strength-item">Enthusiastic and organised team leader</div>
+        <div class="strength-item">Functions equally well as a team member</div>
+        <div class="strength-item">Strong work ethic and high attention to detail</div>
+        <div class="strength-item">Artistically driven and pragmatic thinker</div>
+        <div class="strength-item">Fast learner, motivated to understand professional practice</div>
+        <div class="strength-item">Receptive to feedback and collaboration</div>
+        <div class="strength-item">Deeply passionate about architecture</div>
+        <div class="strength-item">Reliable and punctual with consistent output</div>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <h3>References</h3>
+      <div class="reference-entry">
+        <p class="reference-name">Ms Yana Nanovska</p>
+        <p class="reference-role">Senior Lecturer<br>Studio Leader</p>
+      </div>
+      <div class="reference-entry">
+        <p class="reference-name">Dr Graham Ford</p>
+        <p class="reference-role">Senior Lecturer<br>Studio Leader</p>
+      </div>
+      <p class="reference-note">Details available on request.</p>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="cv-main">
+
+    <div class="main-section">
+      <h3>Personal Statement</h3>
+      <div class="statement-text">
+        <p>I am a Part I Architectural Assistant with a strong interest in designing architecture that is conceptually grounded, contextually responsive, and functionally rigorous. My work explores the relationship between meaning and practicality - embedding narrative and identity within projects while designing logically, with the user experience remaining primary.</p>
+        <p>I enjoy leading collaborative work, structuring team output, and maintaining clarity of direction. I am both creatively driven and critically minded, approaching projects with a balance of artistic sensibility and logical problem-solving. I am a fast and committed learner, eager to contribute meaningfully within a studio environment.</p>
+      </div>
+    </div>
+
+    <div class="main-section">
+      <h3>Relevant Experience</h3>
+
+      <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-title">Major Project: Phase 1</span>
+          <span class="exp-year">Year 3</span>
+        </div>
+        <p class="exp-subtitle">Old Portsmouth Masterplan - Urban Strategy</p>
+        <img class="exp-image" src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth Masterplan">
+        <div class="exp-body">
+          <p class="exp-point">A team-led masterplanning exercise for Old Portsmouth in which I took a leadership role - interpreting the brief, organising workflow, delegating tasks based on individual strengths, and guiding key design decisions across a site encompassing the entirety of Old Portsmouth.</p>
+          <p class="exp-point">The proposal introduced selective removals - the SubseaCraft office building and the Wightlink terminal - to release the waterfront for public use. Interventions were positioned to avoid encroachment on the historic context, instead establishing a new social focus around Portsmouth Point.</p>
+          <p class="exp-point">The masterplan proposed a research centre, education facility, gallery, pavilion, market space, social hub, and residential zone, supported by improved pedestrian connections and public realm. This phase strengthened my ability to coordinate large-scale urban analysis within a team.</p>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-title">Major Project: Phase 2</span>
+          <span class="exp-year">Year 3</span>
+        </div>
+        <p class="exp-subtitle">The Berm / Meridian Building - Mixed-Use Civic Maritime Hub, Old Portsmouth</p>
+        <img class="exp-image" src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building">
+        <div class="exp-body">
+          <p class="exp-point">Working solo, I developed a mixed-use civic building on a reclaimed waterfront site at The Hard, Portsmouth, designed to give back more than it takes. Three marine environmental charities - Blue Marine Foundation, the Marine Conservation Society, and Hampshire &amp; Isle of Wight Wildlife Trust - occupy public galleries alongside a shared research workshop, wet lab, and internal dock.</p>
+          <p class="exp-point">The building includes offices, residential apartments, a restaurant, and a cafe. The berm roof is a continuous accessible green surface connecting the public realm to the waterfront. The project was developed through RIBA Stages 0–3, covering site analysis, concept, spatial planning, material strategy, and technical drawings.</p>
+          <p class="exp-point">Materials were chosen for context and performance: GGBS concrete to reduce embodied carbon, corten steel in reference to the dockyard, and timber throughout the public interior.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="main-section">
+      <h3>Other Experience</h3>
+      <p class="other-exp-text">Experience in hospitality during Sixth Form and university holidays, developing transferable skills including client interaction and service professionalism, team coordination under pressure, and time management.</p>
+    </div>
+
+    <div class="main-section">
+      <h3>Hobbies &amp; Interests</h3>
+      <p class="hobbies-text">Sketching and painting, reading non-fiction (historical period books, architectural histories), strategy and indie video games, cooking, hiking, camping, and travelling - especially to Italy.</p>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

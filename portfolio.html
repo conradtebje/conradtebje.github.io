@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Conrad Tebje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:       #1e3d28;
+      --green-mid:   #2d5436;
+      --green-light: #4a7a5a;
+      --rust:        #a85c1a;
+      --rust-light:  #c97a3a;
+      --white:       #f6f4ef;
+      --grey:        #e8e5de;
+      --dark:        #0e0e0e;
+      --mid:         #4a4a4a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--dark);
+      color: white;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      height: 52px;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-back {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .nav-back::before { content: '←'; }
+    .nav-back:hover { color: white; }
+
+    .nav-logo {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: white; }
+
+    /* ─── COVER ─── */
+    .cover {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 64px 64px 72px;
+      overflow: hidden;
+    }
+
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(14,14,14,0.15) 0%,
+        rgba(14,14,14,0.3) 40%,
+        rgba(14,14,14,0.78) 100%
+      );
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-tag {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cover-tag::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--rust);
+    }
+
+    .cover h1 {
+      font-size: clamp(56px, 8vw, 112px);
+      font-weight: 700;
+      color: white;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cover-meta-item span:first-child {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .cover-meta-item span:last-child {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ─── CONTENTS ─── */
+    .contents {
+      background: var(--white);
+      color: var(--dark);
+      padding: 80px 64px;
+    }
+
+    .contents-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contents-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+    }
+
+    .contents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .contents-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: default;
+    }
+
+    .contents-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: grayscale(20%);
+    }
+    .contents-item:hover img { transform: scale(1.04); }
+
+    .contents-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 60%);
+    }
+
+    .contents-item-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 18px;
+    }
+
+    .contents-item-label .num {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--rust-light);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contents-item-label h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .contents-item-label p {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CHAPTER TITLES ─── */
+    .chapter-title {
+      height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 64px;
+      overflow: hidden;
+    }
+
+    .chapter-title-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4) saturate(0.6);
+    }
+
+    .chapter-title-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,14,0.9) 0%, rgba(14,14,14,0.2) 100%);
+    }
+
+    .chapter-title-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .chapter-num {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chapter-num::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--rust);
+    }
+
+    .chapter-title h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    .chapter-title .sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 14px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── SPREAD: text + image ─── */
+    .spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+
+    .spread.reverse { direction: rtl; }
+    .spread.reverse > * { direction: ltr; }
+
+    .spread-text {
+      padding: 72px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--dark);
+    }
+
+    .spread-text.light {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    .spread-text.green {
+      background: var(--green);
+    }
+
+    .spread-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .spread-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--rust);
+    }
+
+    .spread-text.light .spread-label { color: var(--green-mid); }
+    .spread-text.light .spread-label::before { background: var(--green-mid); }
+
+    .spread-text h3 {
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .spread-text.light h3 { color: var(--dark); }
+
+    .spread-text p {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 14px;
+    }
+    .spread-text p:last-child { margin-bottom: 0; }
+    .spread-text.light p { color: var(--mid); }
+
+    .spread-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spread-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .spread-image-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 10px;
+      border-radius: 2px;
+    }
+
+    /* ─── FULL BLEED IMAGE ─── */
+    .full-img {
+      width: 100%;
+      display: block;
+      max-height: 65vh;
+      object-fit: cover;
+    }
+
+    /* ─── IMAGE GRID ─── */
+    .img-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .img-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .img-grid-2 img,
+    .img-grid-3 img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .img-grid-2 img.tall,
+    .img-grid-3 img.tall {
+      aspect-ratio: 3/4;
+    }
+
+    /* ─── QUOTE BLOCK ─── */
+    .quote-block {
+      background: var(--green);
+      padding: 80px 64px;
+      text-align: center;
+    }
+
+    .quote-block blockquote {
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+      max-width: 720px;
+      margin: 0 auto 24px;
+      letter-spacing: -0.01em;
+      font-style: italic;
+    }
+
+    .quote-block cite {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+    }
+
+    /* ─── DARK SECTION ─── */
+    .dark-section {
+      background: var(--dark);
+      padding: 72px 64px;
+    }
+
+    .dark-section .section-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 600;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dark-section .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--rust);
+    }
+
+    /* ─── TRIPTYCH ─── */
+    .triptych-section {
+      background: var(--white);
+      color: var(--dark);
+      padding: 80px 64px;
+    }
+
+    .triptych-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .triptych-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+    }
+
+    .triptych-section h2 {
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .triptych-section .triptych-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .triptych-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .triptych-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .triptych-panel img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .triptych-panel-label {
+      padding: 14px 0 0;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: white; }
+
+    /* ─── DIVIDER ─── */
+    .rust-line {
+      height: 2px;
+      background: var(--rust);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .cover { padding: 40px 32px 56px; }
+      .contents { padding: 56px 24px; }
+      .contents-grid { grid-template-columns: 1fr 1fr; }
+      .chapter-title { padding: 40px 32px; height: 50vh; }
+      .spread { grid-template-columns: 1fr; }
+      .spread.reverse { direction: ltr; }
+      .spread-text { padding: 48px 32px; }
+      .spread-image { min-height: 280px; }
+      .dark-section { padding: 56px 32px; }
+      .quote-block { padding: 56px 32px; }
+      .triptych-section { padding: 56px 32px; }
+      .triptych-grid { grid-template-columns: 1fr; gap: 20px; }
+      .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; gap: 3px; }
+      footer { padding: 24px 32px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-back">Portfolio</a>
+  <a href="index.html" class="nav-logo">Conrad Tebje</a>
+  <ul class="nav-links">
+    <li><a href="#meridian">Meridian</a></li>
+    <li><a href="#barnsbury">Barnsbury</a></li>
+    <li><a href="#refugee">Refugee Hub</a></li>
+    <li><a href="#dissertation">Dissertation</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════ -->
+<!-- COVER                                  -->
+<!-- ══════════════════════════════════════ -->
+<section class="cover">
+  <img class="cover-bg" src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building">
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <p class="cover-tag">Undergraduate Portfolio &nbsp;·&nbsp; 2022–2026</p>
+    <h1>Conrad<br>Tebje</h1>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span>Qualification</span>
+        <span>BA (Hons) Architecture</span>
+      </div>
+      <div class="cover-meta-item">
+        <span>Institution</span>
+        <span>University of Portsmouth</span>
+      </div>
+      <div class="cover-meta-item">
+        <span>Status</span>
+        <span>Part I Architectural Assistant</span>
+      </div>
+      <div class="cover-meta-item">
+        <span>Year</span>
+        <span>2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CONTENTS                               -->
+<!-- ══════════════════════════════════════ -->
+<section class="contents">
+  <p class="contents-label">Contents</p>
+  <div class="contents-grid">
+
+    <div class="contents-item">
+      <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="Major Project">
+      <div class="contents-item-overlay"></div>
+      <div class="contents-item-label">
+        <span class="num">01</span>
+        <h3>The Berm /<br>Meridian Building</h3>
+        <p>Major Project · 2026</p>
+      </div>
+    </div>
+
+    <div class="contents-item">
+      <img src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth">
+      <div class="contents-item-overlay"></div>
+      <div class="contents-item-label">
+        <span class="num">02</span>
+        <h3>Old Portsmouth<br>Masterplan</h3>
+        <p>Urban Strategy · 2026</p>
+      </div>
+    </div>
+
+    <div class="contents-item">
+      <img src="barnsbury-imgs/page-1.png" alt="Barnsbury Nursery">
+      <div class="contents-item-overlay"></div>
+      <div class="contents-item-label">
+        <span class="num">03</span>
+        <h3>Barnsbury Park<br>Nursery</h3>
+        <p>Education · 2024</p>
+      </div>
+    </div>
+
+    <div class="contents-item">
+      <img src="refugee-imgs/page-3.png" alt="Refugee Hub">
+      <div class="contents-item-overlay"></div>
+      <div class="contents-item-label">
+        <span class="num">04</span>
+        <h3>Refugee Hub</h3>
+        <p>Community · 2025</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="rust-line"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 01 - MERIDIAN                          -->
+<!-- ══════════════════════════════════════ -->
+<section id="meridian">
+
+  <!-- Chapter title -->
+  <div class="chapter-title">
+    <img class="chapter-title-bg" src="screenshots2/Screenshot 2026-05-31 154414.png" alt="Meridian Building">
+    <div class="chapter-title-overlay"></div>
+    <div class="chapter-title-content">
+      <p class="chapter-num">01 &nbsp;·&nbsp; Major Project · Phase 2 · 2026</p>
+      <h2>The Berm /<br>Meridian Building</h2>
+      <p class="sub">Civic Maritime Hub &nbsp;·&nbsp; The Hard, Portsmouth &nbsp;·&nbsp; RIBA Stages 0–3</p>
+    </div>
+  </div>
+
+  <!-- Overview spread -->
+  <div class="spread">
+    <div class="spread-text">
+      <p class="spread-label">Overview</p>
+      <h3>A building that gives back more than it takes</h3>
+      <p>A civic maritime hub on Portsmouth's southern waterfront, occupying a historically sensitive site at The Hard - the threshold between the naval dockyard and the city. Three marine environmental charities occupy public galleries alongside a shared research workshop, wet lab, and internal dock.</p>
+      <p>Visitors can observe active research directly, without glass or distance framing it as spectacle. A restaurant, cafe, lecture theatre, and residential apartments complete the programme above. The building reads as landscape before it reads as architecture: a green berm rises from the public realm and forms a continuous accessible roof.</p>
+      <p>Materials are drawn from the industrial waterfront: GGBS concrete, corten steel, and timber. Nothing was chosen for effect alone.</p>
+    </div>
+    <div class="spread-image">
+      <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="Public realm">
+      <div class="spread-image-caption">Public realm and amphitheatre, looking south</div>
+    </div>
+  </div>
+
+  <!-- Full exterior -->
+  <img class="full-img" src="screenshots2/Screenshot 2026-05-31 154432.png" alt="Rooftop berm" style="max-height:55vh;">
+
+  <!-- Interiors grid -->
+  <div class="img-grid-3" style="gap:3px;">
+    <img src="screenshots2/Screenshot 2026-05-31 154459.png" alt="Cafe and atrium">
+    <img src="screenshots2/Screenshot 2026-05-31 154507.png" alt="Boat workshop">
+    <img src="screenshots2/Screenshot 2026-05-31 154530.png" alt="Bar">
+    <img src="screenshots2/Screenshot 2026-05-31 154519.png" alt="Reception">
+    <img src="screenshots2/Screenshot 2026-05-31 154540.png" alt="Lecture theatre">
+    <img src="screenshots2/Screenshot 2026-05-31 154423.png" alt="Residential apartment">
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-block">
+    <blockquote>"Architecture is the step beyond building. I want to make places people choose to go to - spaces that do not demand money to be enjoyed. Architecture that belongs to more than its owner."</blockquote>
+    <cite>Conrad Tebje &nbsp;·&nbsp; Personal Manifesto</cite>
+  </div>
+
+  <!-- Concept spread -->
+  <div class="spread reverse">
+    <div class="spread-text">
+      <p class="spread-label">Concept &amp; Process</p>
+      <h3>Design Development</h3>
+      <p>The design began with the ground. The berm is not a formal device - it responds to the flood risk of a waterfront site, creates a continuous public roof, and screens the dock from street noise without closing it off.</p>
+      <p>Early work focused on the relationship between the research wing and the public galleries. Several configurations were tested before settling on a lateral arrangement - research and exhibition genuinely adjacent rather than stacked.</p>
+    </div>
+    <div class="spread-image">
+      <img src="screenshots2/Screenshot 2026-06-01 121850.png" alt="Exploded axonometric">
+      <div class="spread-image-caption">Exploded axonometric - programme layering</div>
+    </div>
+  </div>
+
+  <!-- Technical drawings -->
+  <div class="dark-section" style="padding-bottom: 0;">
+    <p class="section-label">Technical Drawings</p>
+  </div>
+
+  <div class="img-grid-3" style="gap:2px; background:var(--dark);">
+    <img src="screenshots2/Screenshot 2026-05-31 154253.png" alt="Site plan" style="background:#111; object-fit:contain;">
+    <img src="screenshots2/Screenshot 2026-05-31 154307.png" alt="Ground floor plan" style="background:#111; object-fit:contain;">
+    <img src="screenshots2/Screenshot 2026-05-31 154320.png" alt="First floor plan" style="background:#111; object-fit:contain;">
+  </div>
+
+  <img class="full-img" src="screenshots2/Screenshot 2026-05-31 154601.png" alt="Sectional perspective" style="background:#111; object-fit:contain; max-height:45vh;">
+  <img class="full-img" src="screenshots2/Screenshot 2026-05-31 154402.png" alt="West section" style="background:#111; object-fit:contain; max-height:38vh;">
+  <img class="full-img" src="screenshots2/section_north.png" alt="North section" style="background:#111; object-fit:contain; max-height:38vh;">
+
+  <div class="img-grid-2" style="gap:2px; background:var(--dark);">
+    <img src="screenshots2/Screenshot 2026-05-31 154339.png" alt="South elevation" style="background:#111; object-fit:contain;">
+    <img src="screenshots2/Screenshot 2026-05-31 154345.png" alt="East elevation" style="background:#111; object-fit:contain;">
+  </div>
+
+</section>
+
+<div class="rust-line"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 02 - OLD PORTSMOUTH                   -->
+<!-- ══════════════════════════════════════ -->
+<section id="old-portsmouth">
+
+  <div class="chapter-title">
+    <img class="chapter-title-bg" src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth">
+    <div class="chapter-title-overlay"></div>
+    <div class="chapter-title-content">
+      <p class="chapter-num">02 &nbsp;·&nbsp; Major Project · Phase 1 · 2026</p>
+      <h2>Old Portsmouth<br>Masterplan</h2>
+      <p class="sub">Urban Strategy &nbsp;·&nbsp; Team Project &nbsp;·&nbsp; Leadership Role</p>
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="spread-text">
+      <p class="spread-label">Urban Strategy</p>
+      <h3>Releasing the waterfront for public use</h3>
+      <p>Phase 1 was a team-led masterplanning exercise for Old Portsmouth. I interpreted the brief, organised workflow, delegated tasks based on individual strengths, and guided key design decisions across a site encompassing the entirety of Old Portsmouth.</p>
+      <p>The masterplan centred on selective removal: the SubseaCraft office building and the Wightlink terminal were identified as structures that occupied prime waterfront land without contributing public value. Removing them created the land needed to build something the city could use.</p>
+      <p>The proposal introduced a research centre, education facility, gallery, pavilion, market space, social hub, and residential zone - a sequence of uses designed to generate activity across the full day. This phase directly shaped the site and programme for Phase 2.</p>
+    </div>
+    <div class="spread-image">
+      <img src="portfolio-imgs/portfolio_page-04.png" alt="Old Portsmouth concept render">
+      <div class="spread-image-caption">Exterior concept render - initial massing</div>
+    </div>
+  </div>
+
+  <div class="img-grid-2" style="gap:3px;">
+    <img src="portfolio-imgs/portfolio_page-05.png" alt="Design progression sketches">
+    <img src="portfolio-imgs/portfolio_page-06.png" alt="Concept in context">
+  </div>
+
+  <div class="dark-section">
+    <p class="section-label">Analysis</p>
+    <div class="img-grid-2" style="gap:3px; margin-top:0;">
+      <img src="screenshots/Screenshot 2026-05-31 154129.png" alt="Site analysis boards" style="aspect-ratio:16/9;">
+      <img src="screenshots/flood_risk.png" alt="Flood risk analysis" style="aspect-ratio:16/9;">
+    </div>
+  </div>
+
+</section>
+
+<div class="rust-line"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 03 - BARNSBURY                         -->
+<!-- ══════════════════════════════════════ -->
+<section id="barnsbury">
+
+  <div class="chapter-title">
+    <img class="chapter-title-bg" src="barnsbury-imgs/page-1.png" alt="Barnsbury Nursery">
+    <div class="chapter-title-overlay"></div>
+    <div class="chapter-title-content">
+      <p class="chapter-num">03 &nbsp;·&nbsp; Education · November 2024</p>
+      <h2>Barnsbury Park<br>Nursery</h2>
+      <p class="sub">Child-Centred Design &nbsp;·&nbsp; Eastney, Portsmouth</p>
+    </div>
+  </div>
+
+  <div class="spread reverse">
+    <div class="spread-text light">
+      <p class="spread-label">Overview</p>
+      <h3>Designed for the people who will actually use it</h3>
+      <p>A new nursery within Barnsbury Park, Eastney - low-rise, timber-clad, sized for children rather than adults. The brief asked for spaces informed by how young children actually move, perceive, and inhabit space. Montessori and Waldorf Steiner pedagogy shaped the design approach.</p>
+      <p>The building is organised as a connected C-shaped plan. Rooms flow into each other rather than separating behind closed doors - baby area, toddler space, preschooler room, staff facilities - with a first-floor outdoor deck extending usable area without increasing the footprint.</p>
+      <p>Portholes in the boundary wall sit at child height. Nooks scaled for hiding, a raised platform for movement, and a pastel ground plane suggesting play without prescribing it.</p>
+    </div>
+    <div class="spread-image">
+      <img src="barnsbury-imgs/page-8.png" alt="Barnsbury birdseye">
+      <div class="spread-image-caption">Birdseye view - roof plan relationship</div>
+    </div>
+  </div>
+
+  <div class="img-grid-3" style="gap:3px;">
+    <img src="barnsbury-imgs/page-2.png" alt="Site analysis">
+    <img src="barnsbury-imgs/page-6.png" alt="Section A">
+    <img src="barnsbury-imgs/page-7.png" alt="Plans and elevations">
+    <img src="barnsbury-imgs/page-8.png" alt="Design features exterior">
+    <img src="barnsbury-imgs/page-9.png" alt="Design features interior">
+    <img src="barnsbury-imgs/page-5.png" alt="Design development">
+  </div>
+
+</section>
+
+<div class="rust-line"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 04 - REFUGEE HUB                       -->
+<!-- ══════════════════════════════════════ -->
+<section id="refugee">
+
+  <div class="chapter-title">
+    <img class="chapter-title-bg" src="refugee-imgs/page-3.png" alt="Refugee Hub">
+    <div class="chapter-title-overlay"></div>
+    <div class="chapter-title-content">
+      <p class="chapter-num">04 &nbsp;·&nbsp; Community · May 2025</p>
+      <h2>Refugee Hub</h2>
+      <p class="sub">Community &amp; Sanctuary &nbsp;·&nbsp; Portsmouth City Centre</p>
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="spread-text">
+      <p class="spread-label">Narrative &amp; Concept</p>
+      <h3>An oasis at the end of a long journey</h3>
+      <p>The brief placed heavy emphasis on narrative - understanding as deeply as possible what the users of this building have been through to get here. The design responds by functioning as an oasis: a place of rest, shelter, and gradual reintegration after displacement.</p>
+      <p>Inspired by Francis Alÿs' <em>Sometimes Making Something Leads to Nothing</em>, a mapping exercise translated the refugee journey into physical form - erosion of identity along the way, roots that can grow again at the destination.</p>
+      <p>A long corridor with repeating undulating arches references the journey itself. Gathering spaces face south. The residential block sits at the quietest point on the site. Public space transitions to private space through materials: concrete to wood, open to enclosed.</p>
+    </div>
+    <div class="spread-image">
+      <img src="portfolio-imgs/portfolio_page-12.png" alt="Refugee Hub exterior render">
+      <div class="spread-image-caption">Exterior render - courtyard and building mass</div>
+    </div>
+  </div>
+
+  <!-- Arches full bleed -->
+  <img class="full-img" src="refugee-imgs/page-6.png" alt="Arches corridor render" style="max-height:60vh; object-position:center 30%;">
+
+  <div class="img-grid-2" style="gap:3px;">
+    <img src="portfolio-imgs/portfolio_page-13.png" alt="Narrative model and sketches">
+    <img src="refugee-imgs/page-5.png" alt="Plans and courtyard">
+  </div>
+
+</section>
+
+<div class="rust-line"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 05 - DISSERTATION                      -->
+<!-- ══════════════════════════════════════ -->
+<section id="dissertation">
+
+  <div class="chapter-title" style="height:55vh;">
+    <img class="chapter-title-bg" src="barnsbury-imgs/page-2.png" alt="Dissertation" style="filter:brightness(0.25) saturate(0) sepia(0.4);">
+    <div class="chapter-title-overlay"></div>
+    <div class="chapter-title-content">
+      <p class="chapter-num">05 &nbsp;·&nbsp; Dissertation · January 2026</p>
+      <h2>Reframing<br>Brutalism</h2>
+      <p class="sub">The Tricorn Centre and Public Perception</p>
+    </div>
+  </div>
+
+  <div class="spread reverse">
+    <div class="spread-text light">
+      <p class="spread-label">Research</p>
+      <h3>How narrative shapes the life and death of a building</h3>
+      <p>Portsmouth's Tricorn Centre opened in 1966 as one of Britain's most ambitious Brutalist buildings. By 2001 it was voted the ugliest building in the country. It was demolished in 2004.</p>
+      <p>This dissertation argues that the Tricorn's failure was not inherent to its architecture, but the product of poor siting, long-term neglect, and cumulative hostile media framing. Drawing on archival newspaper research at Portsmouth History Centre, the study reconstructs how public hatred was gradually constructed over decades - until the building became a scapegoat for anxieties that had nothing to do with concrete.</p>
+      <p>The research speaks to something broader: demolition is so often a response to neglect rather than design. Narrative shapes the reception of a place, and once it is written, it is very hard to unwrite.</p>
+    </div>
+    <div class="spread-image" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; padding:40px;">
+      <div style="text-align:center;">
+        <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Dissertation</p>
+        <p style="font-size:22px; font-weight:700; color:white; line-height:1.2; letter-spacing:-0.02em;">Reframing Brutalism:<br>The Tricorn Centre<br>and Public Perception</p>
+        <p style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:16px;">Conrad Tebje · University of Portsmouth · 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Triptych -->
+  <section class="triptych-section">
+    <p class="triptych-label">Artefact</p>
+    <h2>Triptych Paintings</h2>
+    <p class="triptych-desc">Three abstract paintings tracing the Tricorn Centre's emotional trajectory: from the optimism of its inception, through public rejection, to the unresolved absence left after demolition. Acrylic and mixed media, 2026.</p>
+
+    <img src="portfolio-imgs/portfolio_page-16.png" alt="Triptych paintings" style="width:100%; display:block; border-radius:3px;">
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:12px; text-align:center;">
+      <p style="font-size:11px; color:var(--mid); letter-spacing:0.08em; padding:10px;">I - Brave New World</p>
+      <p style="font-size:11px; color:var(--mid); letter-spacing:0.08em; padding:10px;">II - Rejection &amp; Rupture</p>
+      <p style="font-size:11px; color:var(--mid); letter-spacing:0.08em; padding:10px;">III - Void &amp; Memory</p>
+    </div>
+  </section>
+
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- FOOTER                                 -->
+<!-- ══════════════════════════════════════ -->
+<footer>
+  <p>Conrad Tebje &nbsp;·&nbsp; Undergraduate Portfolio &nbsp;·&nbsp; University of Portsmouth &nbsp;·&nbsp; 2026</p>
+  <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>

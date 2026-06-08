@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refugee Hub — Conrad Tebje</title>
+  <title>Refugee Hub - Conrad Tebje</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,6 +12,7 @@
       --green:        #1e3d28;
       --green-mid:    #2d5436;
       --green-light:  #4a7a5a;
+      --green-pale:   #d6e8db;
       --rust:         #a85c1a;
       --rust-light:   #c97a3a;
       --white:        #f6f4ef;
@@ -33,7 +34,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -69,9 +70,9 @@
       text-transform: uppercase;
     }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .project-hero {
-      min-height: 70vh;
+      min-height: 85vh;
       background: var(--dark);
       display: flex;
       flex-direction: column;
@@ -87,7 +88,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.3;
+      opacity: 0.4;
     }
 
     .project-hero-content {
@@ -134,19 +135,23 @@
       flex-direction: column;
       gap: 4px;
     }
+
     .meta-item span:first-child {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.4);
     }
+
     .meta-item span:last-child {
       font-size: 14px;
       color: rgba(255,255,255,0.85);
     }
 
-    /* ─── SHARED ─── */
-    .section { padding: 80px 48px; }
+    /* SHARED */
+    .section {
+      padding: 80px 48px;
+    }
 
     .section-label {
       font-size: 10px;
@@ -176,7 +181,7 @@
       color: var(--dark);
     }
 
-    /* ─── OVERVIEW ─── */
+    /* OVERVIEW */
     .overview-section { background: white; }
 
     .overview-grid {
@@ -196,12 +201,14 @@
     .overview-text p:first-of-type {
       font-size: 17px;
       color: var(--dark);
+      font-weight: 400;
       line-height: 1.7;
     }
 
     .project-facts {
       display: flex;
       flex-direction: column;
+      gap: 0;
       border: 1px solid var(--grey);
       border-radius: 4px;
       overflow: hidden;
@@ -225,6 +232,7 @@
       font-weight: 500;
       white-space: nowrap;
     }
+
     .fact-row dd {
       font-size: 13px;
       color: var(--dark);
@@ -250,96 +258,340 @@
       border-radius: 2px;
     }
 
-    /* ─── NARRATIVE ─── */
-    .narrative-section { background: var(--grey); }
+    /* CONCEPT SECTION */
+    .concept-section { background: white; border-top: 1px solid var(--grey); }
 
-    .narrative-grid {
+    .concept-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: start;
     }
 
-    .narrative-text p {
+    .concept-text p {
       font-size: 14px;
       line-height: 1.85;
       color: var(--mid);
       margin-bottom: 18px;
     }
 
-    .narrative-quote {
-      border-left: 2px solid var(--rust);
-      padding-left: 24px;
-      margin: 32px 0;
-    }
-
-    .narrative-quote p {
+    .concept-text p:first-of-type {
       font-size: 15px;
       color: var(--dark);
-      font-style: italic;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .charities {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
+      margin-top: 32px;
     }
 
-    .charity-item {
-      padding: 16px 20px;
-      background: white;
-      border-radius: 4px;
-      border-left: 3px solid var(--rust);
-    }
-
-    .charity-item h4 {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--dark);
+    .charities-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
       margin-bottom: 4px;
     }
 
+    .charity-item {
+      padding: 14px 18px;
+      background: var(--grey);
+      border-left: 3px solid var(--rust);
+      border-radius: 2px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.15s;
+    }
+    .charity-item:hover { background: var(--grey-mid); }
+
+    .charity-item h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 3px;
+      letter-spacing: 0.02em;
+    }
+
     .charity-item p {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--mid);
       line-height: 1.5;
       margin: 0;
     }
 
-    /* ─── PAGES / BOARDS ─── */
-    .pages-section {
+    .charity-link-icon {
+      font-style: normal;
+      font-size: 11px;
+      color: var(--rust);
+      margin-left: 3px;
+    }
+
+    /* DESIGN PROGRESSION (grey bg) */
+    .process-section {
+      background: var(--grey);
+      padding: 80px 48px;
+    }
+
+    .process-section .section-label { color: var(--green-mid); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    .process-stage {
+      border-top: 1px solid var(--grey-mid);
+      padding-top: 24px;
+    }
+
+    .process-stage-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .process-stage p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .process-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: white;
+      display: block;
+      margin-top: 16px;
+    }
+
+    /* DRAWINGS (dark bg) */
+    .drawings-section {
       background: var(--dark);
       padding: 80px 0;
     }
 
-    .pages-section .pages-header {
+    .drawings-section .drawings-header {
       padding: 0 48px;
       margin-bottom: 40px;
     }
 
-    .pages-section .section-label {
+    .drawings-section .section-label {
       color: rgba(255,255,255,0.4);
     }
-    .pages-section .section-label::before { background: rgba(255,255,255,0.4); }
-    .pages-section h2.section-title { color: white; }
+    .drawings-section .section-label::before {
+      background: rgba(255,255,255,0.4);
+    }
+    .drawings-section h2.section-title {
+      color: white;
+      margin-bottom: 0;
+    }
 
-    .pages-grid {
+    .drawing-group {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .drawing-group:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .drawing-group-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+      padding: 0 48px 24px;
+      display: block;
+    }
+
+    .plan-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 20px 16px;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .plan-item { background: var(--dark); }
+
+    .fp-img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .section-img {
+      width: 100%;
+      aspect-ratio: 16/6;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .elev-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .circ-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .drawings-caption {
+      padding: 16px 48px 0;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* GALLERY (renders - grey bg) */
+    .gallery-section {
+      background: var(--grey);
+      padding: 80px 0;
+    }
+
+    .gallery-section .gallery-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .gallery-section .section-label { color: var(--green-mid); }
+    .gallery-section h2.section-title { color: var(--dark); margin-bottom: 0; }
+
+    .renders-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3px;
     }
 
-    .pages-grid img {
+    .renders-pair img {
       width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
       display: block;
     }
 
-    .pages-grid img.full-width {
-      grid-column: span 2;
+    .render-full img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      display: block;
     }
 
-    /* ─── FOOTER ─── */
+    .renders-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    .renders-trio img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 12px 48px 0;
+      font-size: 12px;
+      color: var(--light-text);
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    /* MODEL SECTION */
+    .model-section {
+      background: white;
+      padding: 80px 48px;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .model-text p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .model-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* LIGHTBOX */
+    .lb-trigger { cursor: zoom-in; }
+
+    #lb {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,10,10,0.96);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    #lb-img {
+      max-height: 88vh; max-width: 92vw;
+      object-fit: contain;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.7);
+    }
+    #lb-cap {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 30px; line-height: 1;
+      cursor: pointer; font-family: inherit;
+      transition: color 0.15s;
+    }
+    #lb-close:hover { color: white; }
+
+    /* FOOTER */
     footer {
       background: var(--green);
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -365,36 +617,46 @@
     }
     footer a:hover { color: white; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .project-hero { padding: 56px 24px 48px; }
       .section { padding: 56px 24px; }
-      .pages-section .pages-header { padding: 0 24px; }
+      .process-section { padding: 56px 24px; }
+      .model-section { padding: 56px 24px; }
+      .drawings-section .drawings-header { padding: 0 24px; }
+      .drawing-group-label { padding: 0 24px 20px; }
+      .drawings-caption { padding: 12px 24px 0; }
+      .gallery-section .gallery-header { padding: 0 24px; }
+      .gallery-caption { padding: 10px 24px 0; }
       .overview-grid { grid-template-columns: 1fr; gap: 40px; }
-      .narrative-grid { grid-template-columns: 1fr; gap: 40px; }
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .renders-pair { grid-template-columns: 1fr; }
+      .renders-trio { grid-template-columns: 1fr 1fr; }
+      .model-grid { grid-template-columns: 1fr; gap: 40px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 600px) {
-      .pages-grid { grid-template-columns: 1fr; }
-      .pages-grid img.full-width { grid-column: span 1; }
+      .renders-trio { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-back">Portfolio</a>
   <a href="index.html" class="nav-logo">Conrad Tebje</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="project-hero">
-  <img class="hero-bg-img" src="refugee-imgs/page-3.png" alt="Refugee Hub">
+  <img class="hero-bg-img" src="refugee-imgs/exterior-courtyard2.jpg" alt="Refugee Hub exterior courtyard">
   <div class="project-hero-content">
-    <p class="project-tag">Community Design &nbsp;·&nbsp; May 2025</p>
+    <p class="project-tag">Studio Brief &nbsp;·&nbsp; Individual Project &nbsp;·&nbsp; 2025</p>
     <h1>Refugee Hub</h1>
     <div class="project-hero-meta">
       <div class="meta-item">
@@ -409,11 +671,15 @@
         <span>Type</span>
         <span>Community / Residential</span>
       </div>
+      <div class="meta-item">
+        <span>RIBA Stages</span>
+        <span>2 - 3</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── OVERVIEW ── -->
+<!-- OVERVIEW -->
 <section class="section overview-section">
   <div class="overview-grid">
 
@@ -421,29 +687,27 @@
       <p class="section-label">Overview</p>
       <p>
         A community centre and temporary residence for families fleeing conflict, sited within
-        Portsmouth city centre. The building is conceived as an oasis — a place of sanctuary
-        at the end of a long and hard journey, designed around the emotional and physical
-        needs of people who have lost homes, possessions, and in many cases family members.
+        Portsmouth city centre. The building is conceived as an oasis - a place of sanctuary
+        after a long and hard journey, designed around the physical and emotional needs of
+        people who have lost homes, possessions, and in many cases family members.
       </p>
       <p>
-        The plan organises around a central courtyard, with the building wrapping its
-        surrounding context and flowing downward to a sheltered ground level. A long corridor
-        housing an art installation runs the length of the public-facing elevation: its
-        repeating undulating arches reference the journey users have made to arrive here,
-        drawing from the staggered arch corridor at Exeter College Cohen Quad by Alison
-        Brooks Architects.
+        The plan organises around a central courtyard, with the building wrapping the surrounding
+        context and stepping down to a sheltered ground level. A long colonnade runs the length
+        of the public-facing elevation, its repeating undulating arches referencing the journey
+        users have made to arrive here - drawing from the staggered arch corridor at the Exeter
+        College Cohen Quad by Alison Brooks Architects.
       </p>
       <p>
-        Gathering spaces — the classroom, cafeteria, and dining room — face south to take
-        full advantage of available sunlight. The residential block occupies the quietest
-        point in the site, with private rooms connecting back to the shared facilities
-        through reception and storage. The building gives privacy where it's needed
-        and community where it can be found.
+        Gathering spaces - the classroom, cafeteria, and hall - face south to take full advantage
+        of available sunlight. The residential block sits at the quietest point in the site,
+        away from road noise, with private rooms connecting back through reception and storage
+        to the shared facilities. The building gives privacy where it is needed and community
+        where it can be found.
       </p>
       <p>
-        Materials are warm and durable: stone, brick, timber. Colours were drawn from
-        earth tones — ochres, terracottas, deep greens — to create an interior
-        that feels rooted rather than temporary.
+        The material palette draws from warm earth tones - ochres, terracottas, deep greens -
+        to create an interior that feels rooted rather than temporary.
       </p>
     </div>
 
@@ -455,19 +719,23 @@
         </div>
         <div class="fact-row">
           <dt>Year</dt>
-          <dd>May 2025</dd>
+          <dd>2025</dd>
         </div>
         <div class="fact-row">
           <dt>Programme</dt>
-          <dd>Cafeteria, Classroom, Day-Care, Prayer Room, Residences, Courtyard, Hall</dd>
+          <dd>Cafeteria, Classroom, Day-Care, Prayer Room, Yarning Circle, Courtyard, Residences</dd>
         </div>
         <div class="fact-row">
           <dt>Client</dt>
           <dd>Families displaced by conflict</dd>
         </div>
         <div class="fact-row">
-          <dt>Partners</dt>
-          <dd>Portsmouth City of Sanctuary, Connors Toy Library, Children's Legal Centre</dd>
+          <dt>Charity Partners</dt>
+          <dd>
+            <a href="https://portsmouth.cityofsanctuary.org/" target="_blank" rel="noopener" style="color:var(--green-mid);text-decoration:underline;text-underline-offset:2px;display:block;">Portsmouth City of Sanctuary</a>
+            <a href="https://www.connorstoylibrary.org.uk/" target="_blank" rel="noopener" style="color:var(--green-mid);text-decoration:underline;text-underline-offset:2px;display:block;">Connors Toy Library</a>
+            <a href="https://childrenslegalcentre.com/" target="_blank" rel="noopener" style="color:var(--green-mid);text-decoration:underline;text-underline-offset:2px;display:block;">Coram Children's Legal Centre</a>
+          </dd>
         </div>
         <div class="fact-row">
           <dt>Software</dt>
@@ -484,86 +752,292 @@
     </div>
 
   </div>
+
+  <p style="font-size:14px;line-height:1.85;color:var(--mid);border-top:1px solid var(--grey);padding-top:28px;margin-top:40px;">
+    The central lesson from this project was narrative. From the beginning, the brief demanded
+    that I truly understand the people I was designing for - their backgrounds, their trauma,
+    what they actually need from a building. Building a strong story around a design always
+    strengthens it, and this project showed me why. The narrative model was the clearest
+    example: working through the refugee's journey in physical form directly produced the
+    building's defining feature, the repeating arches of the colonnade. My technical skills
+    continued to develop here too, but it is the shift toward story-led design that I took
+    away most from this project.
+  </p>
 </section>
 
-<!-- ── NARRATIVE ── -->
-<section class="section narrative-section">
-  <div class="narrative-grid">
+<!-- CONCEPT -->
+<section class="section concept-section">
+  <div class="concept-grid">
 
-    <div class="narrative-text">
-      <p class="section-label">Narrative &amp; Concept</p>
+    <div class="concept-text">
+      <p class="section-label">Narrative and Concept</p>
       <h2 class="section-title">Architecture as Sanctuary</h2>
       <p>
-        The design began with a mapping exercise — visually representing the emotional and
-        physical journey of a refugee: forced departure, loss of home and identity, the
-        long displacement, arrival. Inspired by Francis Alÿs' <em>Sometimes Making Something
-        Leads to Nothing</em>, this map was translated into a physical model tracing the
-        erosion of identity along the way, while showing how roots can grow again.
+        The design began with a mapping exercise - visually representing the emotional and physical
+        journey of a refugee: forced departure, loss of home and identity, long displacement,
+        and eventual arrival. Inspired by Francis Alys' <em>Sometimes Making Something Leads to
+        Nothing</em>, I translated this map into a physical model tracing the erosion of identity
+        along the way, while showing how roots, once displaced, can grow again.
+      </p>
+      <p>
+        My chosen client group is families fleeing war who may have lost their homes, possessions,
+        and loved ones. Portsmouth City of Sanctuary provides direct support for people in this
+        situation. Connors Toy Library offers families a space to meet and integrate into the
+        community. The Children's Legal Centre provides legal advice to ensure children's rights
+        are protected while they are in England.
+      </p>
+      <p>
+        Spatial transitions - concrete to wood, public to private - were used to reflect the
+        journey narrative. Entry through the colonnade is public and processional. The courtyard
+        beyond is quieter, contained. The residential rooms are private. This sequence gives the
+        building its emotional logic as much as its functional one.
       </p>
 
-      <div class="narrative-quote">
-        <p>The building is not just shelter. It is an argument that arriving somewhere new
-        does not mean starting from nothing.</p>
+      <div class="charities">
+        <p class="charities-label">Charity Partners</p>
+        <a class="charity-item" href="https://portsmouth.cityofsanctuary.org/" target="_blank" rel="noopener">
+          <h4>Portsmouth City of Sanctuary <span class="charity-link-icon">&#8599;</span></h4>
+          <p>Direct action and compassionate support for people seeking refuge in Portsmouth.</p>
+        </a>
+        <a class="charity-item" href="https://www.connorstoylibrary.org.uk/" target="_blank" rel="noopener">
+          <h4>Connors Toy Library <span class="charity-link-icon">&#8599;</span></h4>
+          <p>A space for families and children to meet, make friends, and integrate into the community.</p>
+        </a>
+        <a class="charity-item" href="https://childrenslegalcentre.com/" target="_blank" rel="noopener">
+          <h4>Coram Children's Legal Centre <span class="charity-link-icon">&#8599;</span></h4>
+          <p>Legal advice and support ensuring children's rights are protected while in England.</p>
+        </a>
       </div>
-
-      <p>
-        Spatial transitions — from concrete to wood, from public to private — are used to
-        reflect the journey narrative. Entry through the arch corridor is public and
-        processional. The courtyard beyond is quieter, contained, somewhere to stop.
-        The residential rooms beyond that are private.
-      </p>
-      <p>
-        The first design iteration was too large and too abstract. Subsequent iterations
-        focused the building on the lived experience of its users, reducing scale,
-        improving solar orientation, and anchoring the residential block at the quietest
-        part of the site away from road noise.
-      </p>
     </div>
 
-    <div class="charities">
-      <h4 style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-mid);margin-bottom:16px;">Supporting Organisations</h4>
-
-      <div class="charity-item">
-        <h4>Portsmouth City of Sanctuary</h4>
-        <p>Direct action and compassionate support for people fleeing conflict and persecution.</p>
-      </div>
-
-      <div class="charity-item">
-        <h4>Connors Toy Library</h4>
-        <p>A community space where families and children meet, make friends, and integrate into the city.</p>
-      </div>
-
-      <div class="charity-item">
-        <h4>Coram Children's Legal Centre</h4>
-        <p>Legal advice and support ensuring children's rights are protected while they are in England.</p>
-      </div>
+    <div>
+      <img class="lb-trigger process-img" src="refugee-imgs/concept-sketch.jpg"
+           alt="Concept sketch and massing study">
+      <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+        Concept sketch - massing and spatial sequence
+      </p>
+      <img class="lb-trigger process-img" src="refugee-imgs/materials.jpg"
+           alt="Material palette" style="margin-top:24px;">
+      <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+        Material palette - earth tones and warm timber
+      </p>
     </div>
 
   </div>
 </section>
 
-<!-- ── PROJECT BOARDS ── -->
-<section class="pages-section">
-  <div class="pages-header">
-    <p class="section-label">Project Boards</p>
-    <h2 class="section-title">Documentation</h2>
+<!-- FULL-WIDTH AERIAL RENDER -->
+<div>
+  <img class="lb-trigger" src="refugee-imgs/exterior-aerial.jpg"
+       alt="Exterior aerial render"
+       style="width:100%;aspect-ratio:16/7;object-fit:cover;display:block;">
+</div>
+
+<!-- DESIGN PROGRESSION -->
+<section class="process-section">
+  <p class="section-label">Design Progression</p>
+  <h2 class="section-title" style="color:var(--dark);">Narrative, Concept, and Development</h2>
+
+  <!-- NARRATIVE MODEL -->
+  <div class="process-grid" style="margin-top:40px;align-items:center;">
+
+    <div style="grid-column:span 2;">
+      <img class="lb-trigger" src="refugee-imgs/concept-sketchbook.jpg"
+           alt="Concept sketchbook - journey mapping"
+           style="width:100%;aspect-ratio:12/5;object-fit:contain;background:white;display:block;">
+    </div>
+
+    <div style="grid-column:span 2;margin-top:3px;">
+      <img class="lb-trigger" src="refugee-imgs/model.jpg"
+           alt="Narrative physical model"
+           style="width:100%;aspect-ratio:16/7;object-fit:cover;display:block;">
+    </div>
+
   </div>
 
-  <div class="pages-grid">
-    <img class="full-width" src="refugee-imgs/page-1.png" alt="Narrative and precedent research">
-    <img class="full-width" src="refugee-imgs/page-2.png" alt="Site Analysis">
-    <img class="full-width" src="refugee-imgs/page-3.png" alt="Design Progression">
-    <img class="full-width" src="refugee-imgs/page-4.png" alt="Technical Drawings — Cafeteria and Sections">
-    <img class="full-width" src="refugee-imgs/page-5.png" alt="Technical Drawings — Plans and Courtyard">
-    <img class="full-width" src="refugee-imgs/page-6.png" alt="Technical Drawings — Arches and Elevations">
+  <div style="margin-top:24px;">
+    <p class="process-stage-label">The Narrative Model</p>
+    <p style="font-size:14px;line-height:1.85;color:var(--mid);margin-bottom:14px;">
+      The project began with a mapping exercise and a physical model representing the emotional
+      journey of a refugee - not the building itself, but the story behind it. Read left to right,
+      the model traces the full arc of displacement: security and safety at home, then the
+      rupture of war, arrival at a refugee camp where there is some semblance of shelter but no
+      future, and the decision to leave.
+    </p>
+    <p style="font-size:14px;line-height:1.85;color:var(--mid);margin-bottom:14px;">
+      The blue section represents the sea crossing - the idea of a brighter future, but also the
+      most dangerous part of the journey. A family member is lost along the way. The black slabs,
+      which represent hope, shrink to almost nothing, then slowly begin to rebuild as the person
+      arrives. The transparent panels that follow represent the bureaucracy of asylum - the forms,
+      the waiting, the layers of process that stand between arrival and belonging. Eventually, the
+      slabs grow again: a slow, uncertain rebuilding of a life.
+    </p>
+    <p style="font-size:14px;line-height:1.85;color:var(--mid);">
+      Strings run the length of the model, connecting the person's old life to their new one.
+      Some are cut. Each cut string is a loss - a friend, a family member, a home, a place.
+      This model, inspired by Francis Alys' <em>Sometimes Making Something Leads to Nothing</em>,
+      became the emotional foundation from which all spatial decisions in the building were made.
+    </p>
   </div>
+
+  <!-- DESIGN STAGES -->
+  <div class="process-grid" style="margin-top:56px;border-top:1px solid var(--grey-mid);padding-top:40px;">
+
+    <div class="process-stage">
+      <p class="process-stage-label">Stage 01 - Initial Concept</p>
+      <p>
+        The first iteration was too large and bore little connection to the journey narrative.
+        I returned to the mapping exercise to reimpose its logic onto the plan: the colonnade
+        as threshold, the courtyard as arrival, the residences as rest.
+      </p>
+    </div>
+
+    <div class="process-stage">
+      <p class="process-stage-label">Stage 02 - Design Development</p>
+      <p>
+        Subsequent iterations reduced scale, improved solar orientation, and fixed the residential
+        block at the quietest part of the site. The Burtinle District Hospital informed the
+        sanctuary-like quality I was aiming for - spaces that offer calm after hardship.
+      </p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+    <img class="lb-trigger" src="refugee-imgs/early-design-model.jpg"
+         alt="Early design model"
+         style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+    <img class="lb-trigger" src="refugee-imgs/early-design-model-v2.jpg"
+         alt="Early design model v2"
+         style="width:100%;aspect-ratio:5/3;object-fit:cover;display:block;">
+    <img class="lb-trigger" src="refugee-imgs/circulation.jpg"
+         alt="Circulation diagram"
+         style="width:100%;aspect-ratio:5/3;object-fit:contain;background:white;display:block;">
+  </div>
+  <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+    Early design models (iterations 1 and 2) and circulation diagram
+  </p>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- TECHNICAL DRAWINGS -->
+<section class="drawings-section">
+  <div class="drawings-header">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Final Design</h2>
+  </div>
+
+  <!-- FLOOR PLANS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Floor Plans</span>
+    <div class="plans-grid">
+      <div class="plan-item">
+        <p class="plan-label">Ground Floor</p>
+        <img class="lb-trigger fp-img" src="refugee-imgs/fp-ground.jpg" alt="Ground floor plan">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">First Floor</p>
+        <img class="lb-trigger fp-img" src="refugee-imgs/fp-first.jpg" alt="First floor plan">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Sections</span>
+    <div class="plans-grid">
+      <div class="plan-item">
+        <p class="plan-label">Section 01</p>
+        <img class="lb-trigger section-img" src="refugee-imgs/section-1.jpg" alt="Section 01">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">Section 02</p>
+        <img class="lb-trigger section-img" src="refugee-imgs/section-2.jpg" alt="Section 02">
+      </div>
+    </div>
+  </div>
+
+  <!-- ELEVATIONS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Elevations</span>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+      <div class="plan-item">
+        <p class="plan-label">East</p>
+        <img class="lb-trigger elev-img" src="refugee-imgs/elev-east.jpg" alt="East elevation">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">North</p>
+        <img class="lb-trigger elev-img" src="refugee-imgs/elev-north.jpg" alt="North elevation">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">West</p>
+        <img class="lb-trigger elev-img" src="refugee-imgs/elev-west.jpg" alt="West elevation">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- RENDERS -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">Renders</p>
+    <h2 class="section-title">Exterior and Interior</h2>
+  </div>
+
+  <div class="render-full">
+    <img class="lb-trigger" src="refugee-imgs/exterior-courtyard.jpg" alt="Exterior courtyard render">
+  </div>
+  <p class="gallery-caption">Exterior courtyard - the central gathering point of the scheme</p>
+
+  <div class="renders-trio" style="margin-top:3px;">
+    <img class="lb-trigger" src="refugee-imgs/interior-colonnade.jpg" alt="Interior colonnade render">
+    <img class="lb-trigger" src="refugee-imgs/interior-communal.jpg" alt="Interior communal space render">
+    <img class="lb-trigger" src="refugee-imgs/interior-bedroom.jpg" alt="Interior resident room render">
+  </div>
+  <p class="gallery-caption">Left to right: colonnade interior, communal space, resident room</p>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
-  <a href="index.html">← Back to Portfolio</a>
+  <p>Conrad Tebje &nbsp;·&nbsp; Architecture Portfolio</p>
+  <a href="index.html">Back to Portfolio</a>
 </footer>
+
+<script>
+  // Lightbox
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-cap');
+
+  function lbOpen(src, cap) {
+    lbImg.src = src;
+    lbCap.textContent = cap || '';
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    lb.style.display = 'none';
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lbClose(); });
+
+  document.querySelectorAll('.drawings-section img, .gallery-section img, .concept-section img, .process-section img, .model-section img').forEach(img => {
+    if (!img.classList.contains('lb-trigger')) return;
+    img.addEventListener('click', () => {
+      const cap = img.alt || img.closest('[data-cap]')?.dataset.cap || '';
+      lbOpen(img.src, cap);
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Berm / Meridian Building — Conrad Tebje</title>
+  <title>The Berm / Meridian Building - Conrad Tebje</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -70,7 +70,7 @@
       text-transform: uppercase;
     }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .project-hero {
       min-height: 85vh;
       background: var(--green);
@@ -159,7 +159,7 @@
       color: rgba(255,255,255,0.85);
     }
 
-    /* ─── SHARED ─── */
+    /* SHARED */
     .section {
       padding: 80px 48px;
     }
@@ -192,10 +192,8 @@
       color: var(--dark);
     }
 
-    /* ─── OVERVIEW ─── */
-    .overview-section {
-      background: white;
-    }
+    /* OVERVIEW */
+    .overview-section { background: white; }
 
     .overview-grid {
       display: grid;
@@ -210,6 +208,13 @@
       color: var(--mid);
       margin-bottom: 20px;
     }
+
+    .overview-text a {
+      color: var(--green-mid);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .overview-text a:hover { color: var(--green); }
 
     .overview-text p:first-of-type {
       font-size: 17px;
@@ -271,69 +276,8 @@
       border-radius: 2px;
     }
 
-    /* ─── GALLERY ─── */
-    .gallery-section {
-      background: var(--grey);
-      padding: 80px 0;
-    }
-
-    .gallery-section .gallery-header {
-      padding: 0 48px;
-      margin-bottom: 40px;
-    }
-
-    .gallery-full {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .gallery-full img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-      margin-top: 3px;
-    }
-
-    .gallery-strip img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px;
-      margin-top: 3px;
-    }
-
-    .gallery-pair img {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-caption {
-      padding: 16px 48px 0;
-      font-size: 12px;
-      color: var(--light-text);
-      font-style: italic;
-      letter-spacing: 0.04em;
-    }
-
-    /* ─── CONCEPT ─── */
-    .concept-section {
-      background: white;
-    }
+    /* CONCEPT */
+    .concept-section { background: white; }
 
     .concept-grid {
       display: grid;
@@ -362,97 +306,13 @@
       border-radius: 3px;
     }
 
-    .concept-images img.wide {
-      grid-column: 1 / -1;
-      aspect-ratio: 16/7;
-    }
-
-    /* ─── DRAWINGS ─── */
-    .drawings-section {
-      background: var(--dark);
-      padding: 80px 0;
-    }
-
-    .drawings-section .drawings-header {
-      padding: 0 48px;
-      margin-bottom: 40px;
-    }
-
-    .drawings-section .section-label {
-      color: rgba(255,255,255,0.4);
-    }
-    .drawings-section .section-label::before {
-      background: rgba(255,255,255,0.4);
-    }
-    .drawings-section h2.section-title {
-      color: white;
-    }
-
-    .drawings-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .drawings-grid img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.95);
-    }
-
-    .drawings-grid img.span2 {
-      grid-column: span 2;
-      aspect-ratio: 8/3;
-    }
-
-    .drawings-grid img.span3 {
-      grid-column: span 3;
-      aspect-ratio: 3/1;
-    }
-
-    .drawings-caption {
-      padding: 16px 48px 0;
-      font-size: 11px;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* ─── INTERIORS ─── */
-    .interiors-section {
-      background: var(--white);
-    }
-
-    .interiors-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3px;
-    }
-
-    .interiors-grid img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .interiors-grid img.wide {
-      grid-column: span 2;
-      height: 400px;
-    }
-
-    /* ─── MATERIALS ─── */
-    .materials-section {
-      background: var(--grey);
-    }
+    /* MATERIALS */
+    .materials-section { background: var(--grey); }
 
     .materials-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 12px;
     }
 
     .material-card {
@@ -474,7 +334,444 @@
       letter-spacing: 0.04em;
     }
 
-    /* ─── FOOTER ─── */
+    /* DRAWINGS (dark bg) */
+    .drawings-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .drawings-section .drawings-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .drawings-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+    .drawings-section .section-label::before {
+      background: rgba(255,255,255,0.4);
+    }
+    .drawings-section h2.section-title {
+      color: white;
+      margin-bottom: 0;
+    }
+
+    /* Full-width drawing container */
+    .drawing-full img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      background: var(--dark);
+    }
+
+    /* Plans 2x2 grid */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .plan-item { background: var(--dark); }
+
+    .plan-item img {
+      width: 100%;
+      height: 380px;
+      object-fit: contain;
+      display: block;
+      background: var(--dark);
+    }
+
+    .plan-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 20px 16px;
+    }
+
+    /* Drawings caption */
+    .drawings-caption {
+      padding: 16px 48px 0;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* GALLERY (grey bg, edge-to-edge images) */
+    .gallery-section {
+      background: var(--grey);
+      padding: 80px 0;
+    }
+
+    .gallery-section .gallery-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .gallery-section .section-label { color: var(--green-mid); }
+    .gallery-section h2.section-title { color: var(--dark); margin-bottom: 0; }
+
+    .gallery-full img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 12px 48px 0;
+      font-size: 12px;
+      color: var(--light-text);
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    /* Elevations - side by side */
+    .elev-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .elev-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: #1a1a1a;
+      display: block;
+    }
+
+    .elev-label {
+      padding: 10px 48px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light-text);
+    }
+
+    /* Detail section (white bg) */
+    .detail-section { background: white; }
+
+    .detail-section .section-label { color: var(--green-mid); }
+    .detail-section h2.section-title { color: var(--dark); }
+
+    .detail-inner {
+      display: flex;
+      gap: 64px;
+      align-items: flex-start;
+    }
+
+    .detail-inner img {
+      max-width: 480px;
+      width: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .detail-notes {
+      max-width: 360px;
+    }
+
+    .detail-notes h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .detail-notes ul {
+      list-style: none;
+    }
+
+    .detail-notes li {
+      font-size: 13px;
+      color: var(--mid);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--grey);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .detail-notes li::before {
+      content: '-';
+      color: var(--green-light);
+      flex-shrink: 0;
+    }
+
+    /* Technical Drawings: Axo + Detail side by side */
+    .axo-section { background: var(--dark); padding: 80px 48px; }
+
+    .axo-section .section-label { color: rgba(255,255,255,0.4); }
+    .axo-section .section-label::before { background: rgba(255,255,255,0.4); }
+    .axo-section h2.section-title { color: white; }
+
+    .axo-detail-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .axo-col img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .axo-caption {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    .detail-col img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .detail-col h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      margin: 24px 0 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .detail-col ul {
+      list-style: none;
+    }
+
+    .detail-col li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .detail-col li::before {
+      content: '-';
+      color: var(--green-light);
+      flex-shrink: 0;
+    }
+
+    /* RENDERS - exterior */
+    .ext-render-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    .ext-render-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ext-render-label {
+      padding: 10px 0 0;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-text);
+    }
+
+    /* RENDERS - interior */
+    .interiors-section { background: var(--white); }
+
+    .interiors-section .section-label { color: var(--green-mid); }
+    .interiors-section h2.section-title { color: var(--dark); }
+
+    .render-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
+    }
+
+    .render-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .render-id {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* LIGHTBOX */
+    .lb-trigger { cursor: zoom-in; }
+
+    #lb {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,10,10,0.96);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    #lb-img {
+      max-height: 88vh; max-width: 92vw;
+      object-fit: contain;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.7);
+    }
+    #lb-cap {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 30px; line-height: 1;
+      cursor: pointer; font-family: inherit;
+      transition: color 0.15s;
+    }
+    #lb-close:hover { color: white; }
+
+    /* DRAWING GROUPS */
+    .drawing-group {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .drawing-group-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+      padding: 0 48px 24px;
+      display: block;
+    }
+
+    /* PROCESS STAGES */
+    .process-stage {
+      padding-top: 48px;
+      margin-top: 48px;
+      border-top: 1px solid var(--grey);
+    }
+    .process-stage-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .process-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--rust-light);
+    }
+    .process-stage-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+    .process-text {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .process-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .process-pair + .process-pair { margin-top: 10px; }
+    .process-3col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+      align-items: start;
+      margin-top: 32px;
+    }
+    .process-3col .process-stage {
+      border-top: 1px solid var(--grey);
+      padding-top: 24px;
+      margin-top: 0;
+    }
+    .process-3col .process-text { max-width: none; margin-bottom: 16px; }
+    .process-3col .proc-img-stacked { margin-bottom: 4px; }
+    .proc-img-land {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: contain; background: var(--grey);
+      display: block; border-radius: 2px;
+    }
+    .proc-img-sq {
+      width: 100%; aspect-ratio: 3/2;
+      object-fit: contain; background: #1e1e1e;
+      display: block; border-radius: 2px;
+    }
+    .proc-img-wide {
+      width: 100%; aspect-ratio: 2/1;
+      object-fit: contain; background: #1e1e1e;
+      display: block; border-radius: 2px;
+    }
+    .proc-img-port {
+      width: 100%; aspect-ratio: 9/16;
+      object-fit: contain; background: var(--grey);
+      display: block; border-radius: 2px;
+    }
+
+    /* Uniform image sizing — aspect-ratio based, replaces all fixed heights */
+    .siteplan-img {
+      width: 100%; aspect-ratio: 3/2;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .plan-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .section-persp-img {
+      width: 100%; aspect-ratio: 3/2;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .section-pair-img {
+      width: 100%; aspect-ratio: 12/5;
+      object-fit: contain; background: #1a1a1a; display: block;
+    }
+    .elev-img {
+      width: 100%; aspect-ratio: 2/1;
+      object-fit: contain; background: #1a1a1a; display: block;
+    }
+    .portrait-drawing-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .render-hero-img {
+      width: 100%; aspect-ratio: 2/1;
+      object-fit: cover; display: block;
+    }
+    .render-grid-img {
+      width: 100%; aspect-ratio: 2/1;
+      object-fit: cover; display: block; border-radius: 2px;
+    }
+
+    /* FOOTER */
     footer {
       background: var(--green);
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -500,7 +797,7 @@
     }
     footer a:hover { color: white; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .project-hero { padding: 56px 24px 48px; }
@@ -508,45 +805,45 @@
       .gallery-section .gallery-header { padding: 0 24px; }
       .drawings-section .drawings-header { padding: 0 24px; }
       .drawings-caption { padding: 12px 24px 0; }
-      .gallery-caption { padding: 12px 24px 0; }
+      .gallery-caption { padding: 10px 24px 0; }
+      .elev-label { padding: 8px 24px; }
+      .axo-section { padding: 56px 24px; }
       .overview-grid { grid-template-columns: 1fr; gap: 40px; }
       .concept-grid { grid-template-columns: 1fr; gap: 40px; }
-      .gallery-strip { grid-template-columns: 1fr 1fr; }
-      .drawings-grid { grid-template-columns: 1fr 1fr; }
-      .drawings-grid img.span3 { grid-column: span 2; }
-      .interiors-grid img.wide { height: 260px; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .elev-pair { grid-template-columns: 1fr; }
+      .axo-detail-pair { grid-template-columns: 1fr; }
       .materials-grid { grid-template-columns: repeat(2, 1fr); }
+      .render-grid { grid-template-columns: 1fr; }
+      .ext-render-pair { grid-template-columns: 1fr; }
+      .detail-inner { flex-direction: column; gap: 32px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 600px) {
-      .gallery-strip { grid-template-columns: 1fr; }
-      .gallery-pair { grid-template-columns: 1fr; }
-      .interiors-grid { grid-template-columns: 1fr; }
-      .interiors-grid img.wide { grid-column: span 1; }
       .concept-images { grid-template-columns: 1fr; }
-      .concept-images img.wide { grid-column: span 1; }
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-back">Portfolio</a>
   <a href="index.html" class="nav-logo">Conrad Tebje</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="project-hero">
-  <img class="hero-bg-img" src="screenshots2/Screenshot 2026-05-31 154414.png" alt="The Berm / Meridian Building exterior">
+  <img class="hero-bg-img" src="meridian-imgs/hero.jpg" alt="The Berm / Meridian Building exterior">
   <div class="project-hero-content">
     <p class="project-tag">Major Project &nbsp;·&nbsp; Phase 2 &nbsp;·&nbsp; Solo Building</p>
     <h1>The Berm /<br>Meridian Building</h1>
     <div class="project-hero-meta">
       <div class="meta-item">
         <span>Location</span>
-        <span>The Hard, Portsmouth</span>
+        <span>Old Portsmouth / Spice Island</span>
       </div>
       <div class="meta-item">
         <span>Year</span>
@@ -554,7 +851,7 @@
       </div>
       <div class="meta-item">
         <span>RIBA Stages</span>
-        <span>0 – 3</span>
+        <span>0 - 3</span>
       </div>
       <div class="meta-item">
         <span>Type</span>
@@ -564,7 +861,7 @@
   </div>
 </section>
 
-<!-- ── OVERVIEW ── -->
+<!-- OVERVIEW -->
 <section class="section overview-section">
   <div class="overview-grid">
 
@@ -572,13 +869,12 @@
       <p class="section-label">Overview</p>
       <p>
         A civic maritime hub on Portsmouth's southern waterfront, designed to give back more
-        than it takes. The building occupies a historically sensitive site at The Hard, between
-        the naval dockyard and the city — a threshold that has defined Portsmouth's relationship
+        than it takes. The building occupies a historically sensitive site at Spice Island, Old Portsmouth, between
+        the naval dockyard and the city - a threshold that has defined Portsmouth's relationship
         with the sea for centuries.
       </p>
       <p>
-        Three marine environmental charities — Blue Marine Foundation, the Marine Conservation
-        Society, and Hampshire &amp; Isle of Wight Wildlife Trust — occupy public galleries set
+        Three marine environmental charities - the <a href="https://www.bluemarinefoundation.com/" target="_blank" rel="noopener">Blue Marine Foundation</a>, the <a href="https://www.mcsuk.org/" target="_blank" rel="noopener">Marine Conservation Society</a>, and the <a href="https://www.hiwwt.org.uk/" target="_blank" rel="noopener">Hampshire &amp; Isle of Wight Wildlife Trust</a> - occupy public galleries set
         alongside a shared research workshop, wet lab, and internal dock. Visitors can observe
         active research directly, so the building functions as both attraction and working facility.
       </p>
@@ -599,15 +895,19 @@
       <dl class="project-facts">
         <div class="fact-row">
           <dt>Location</dt>
-          <dd>The Hard, Portsmouth</dd>
+          <dd>Old Portsmouth / Spice Island</dd>
         </div>
         <div class="fact-row">
           <dt>Phase</dt>
-          <dd>Phase 2 — Solo building</dd>
+          <dd>Phase 2 - Solo building</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Phase 1</dt>
+          <dd><a href="old-portsmouth.html">The Berm Masterplan →</a></dd>
         </div>
         <div class="fact-row">
           <dt>RIBA Stages</dt>
-          <dd>0 – 3</dd>
+          <dd>0 - 3</dd>
         </div>
         <div class="fact-row">
           <dt>Programme</dt>
@@ -615,11 +915,11 @@
         </div>
         <div class="fact-row">
           <dt>Charities</dt>
-          <dd>Blue Marine Foundation, MCS, HIWWT</dd>
+          <dd><a href="https://www.bluemarinefoundation.com/" target="_blank" rel="noopener" style="color:inherit;">Blue Marine Foundation</a>, <a href="https://www.mcsuk.org/" target="_blank" rel="noopener" style="color:inherit;">Marine Conservation Society</a>, <a href="https://www.hiwwt.org.uk/" target="_blank" rel="noopener" style="color:inherit;">Hampshire &amp; Isle of Wight Wildlife Trust</a></dd>
         </div>
         <div class="fact-row">
-          <dt>Sofware</dt>
-          <dd>SketchUp, V-Ray, AutoCAD, Adobe Suite</dd>
+          <dt>Software</dt>
+          <dd>SketchUp, Lumion, Adobe Suite</dd>
         </div>
         <div class="fact-row">
           <dt>Year</dt>
@@ -638,174 +938,269 @@
     </div>
 
   </div>
+
+  <p style="font-size:14px;line-height:1.85;color:var(--mid);border-top:1px solid var(--grey);padding-top:28px;margin-top:40px;">
+    Meridian is where everything came together. Having worked through phase one on the Old
+    Portsmouth masterplan, I came into this with deep context - I knew the site, the narrative,
+    the constraints. On top of that came three years of accumulated learning: SketchUp at its
+    most refined, Lumion for rendering, building regulations properly integrated into the design
+    process. The project had the time and the scope to be fully fleshed out, and I think that
+    shows. It is the point where the design thinking, the technical ability, and the
+    story-led approach I had been developing all met in one place.
+  </p>
 </section>
 
-<!-- ── RENDERS ── -->
-<section class="gallery-section">
-  <div class="gallery-header">
-    <p class="section-label">Renders</p>
-    <h2 class="section-title">Exterior</h2>
-  </div>
-
-  <div class="gallery-full">
-    <img src="screenshots2/Screenshot 2026-05-31 154414.png" alt="Exterior waterfront view">
-  </div>
-
-  <div class="gallery-strip">
-    <img src="screenshots2/Screenshot 2026-05-31 154451.png" alt="Public realm and amphitheatre">
-    <img src="screenshots2/Screenshot 2026-05-31 154432.png" alt="Rooftop view">
-    <img src="screenshots2/Screenshot 2026-05-31 154423.png" alt="Hotel room interior">
-  </div>
-
-  <p class="gallery-caption">From top: waterfront elevation; public realm; rooftop accessible berm; residential apartment</p>
-</section>
-
-<!-- ── INTERIORS ── -->
-<section class="section interiors-section">
-  <p class="section-label">Renders</p>
-  <h2 class="section-title">Interior Spaces</h2>
-
-  <div class="interiors-grid">
-    <img class="wide" src="screenshots2/Screenshot 2026-05-31 154459.png" alt="Cafe and atrium interior">
-    <img src="screenshots2/Screenshot 2026-05-31 154507.png" alt="Boat workshop and internal dock">
-    <img src="screenshots2/Screenshot 2026-05-31 154519.png" alt="Reception">
-    <img src="screenshots2/Screenshot 2026-05-31 154530.png" alt="Bar and social space">
-    <img src="screenshots2/Screenshot 2026-05-31 154540.png" alt="Lecture theatre">
-  </div>
-</section>
-
-<!-- ── CONCEPT ── -->
+<!-- CONCEPT & PROCESS -->
 <section class="section concept-section">
-  <div class="concept-grid">
+  <p class="section-label">Concept &amp; Process</p>
+  <h2 class="section-title">Design Development</h2>
 
-    <div class="concept-text">
-      <p class="section-label">Concept &amp; Process</p>
-      <h2 class="section-title">Design Development</h2>
-      <p>
-        The design began with the ground. The berm is not a formal device — it is a response
-        to the flood risk of a waterfront site, the desire to create a continuous public roof,
-        and the need to screen the dock from street-level noise without closing it off.
-      </p>
-      <p>
-        Early process work (sketches, massing studies) focused on the relationship between
-        the research wing and the public galleries. Several configurations were tested before
-        settling on a lateral arrangement that keeps research and exhibition genuinely
-        adjacent — visitors walking past glass can see the workshop below without any barrier
-        framing it as spectacle.
-      </p>
-      <p>
-        The exploded axonometric shows how programme layers: the dock and workshop at the
-        lowest level, the research and gallery floors above, residential and hospitality
-        stepping back on the upper floors, and the berm as a continuous green surface
-        tying everything together from outside.
-      </p>
+  <div class="process-3col">
+
+    <!-- Stage 01 -->
+    <div class="process-stage">
+      <div class="process-stage-header">
+        <span class="process-num">01</span>
+        <span class="process-stage-name">Concept Sketches</span>
+      </div>
+      <p class="process-text">The first iterations worked through the building's massing logic and stepped section by hand, before any digital modelling began. Even at this early stage, the atrium, workshop, and raised ground block are all present - the central ideas held from the start.</p>
+      <img src="meridian-imgs/concept-sketch-massing.jpg" alt="Concept sketch - massing and section" class="proc-img-land proc-img-stacked">
+      <img src="meridian-imgs/concept-sketch-notebook.jpg" alt="Concept sketchbook" class="proc-img-land">
     </div>
 
-    <div class="concept-images">
-      <img class="wide" src="screenshots2/Screenshot 2026-06-01 121850.png" alt="Exploded axonometric">
-      <img src="screenshots2/sketch-07.png" alt="Concept sketch">
-      <img src="screenshots2/Screenshot 2026-06-01 122547.png" alt="Office render">
+    <!-- Stage 02 -->
+    <div class="process-stage">
+      <div class="process-stage-header">
+        <span class="process-num">02</span>
+        <span class="process-stage-name">Early Digital Model</span>
+      </div>
+      <p class="process-text">The digital model placed the building on site for the first time, testing how the form responded to its surroundings. The masterplan came into shape alongside it - establishing dock access and locking in the building's position on the western edge.</p>
+      <img src="meridian-imgs/earlymodel-axo-v1.jpg" alt="Early model axonometric - version 1" class="proc-img-sq proc-img-stacked">
+      <img src="meridian-imgs/earlymodel-axo-v2.jpg" alt="Early model axonometric - version 2" class="proc-img-sq">
     </div>
 
   </div>
-</section>
 
-<!-- ── TECHNICAL DRAWINGS ── -->
-<section class="drawings-section">
-  <div class="drawings-header">
-    <p class="section-label">Technical Drawings</p>
-    <h2 class="section-title">Plans &amp; Sections</h2>
-  </div>
-
-  <div class="drawings-grid">
-    <img src="screenshots2/Screenshot 2026-05-31 154253.png" alt="Site plan">
-    <img src="screenshots2/Screenshot 2026-05-31 154307.png" alt="Ground floor plan">
-    <img src="screenshots2/Screenshot 2026-05-31 154320.png" alt="First floor plan">
-    <img src="screenshots2/Screenshot 2026-05-31 154328.png" alt="Second floor plan">
-    <img class="span2" src="screenshots2/Screenshot 2026-05-31 154601.png" alt="Sectional perspective (annotated)">
-    <img class="span3" src="screenshots2/Screenshot 2026-05-31 154402.png" alt="West-facing section">
-    <img class="span3" src="screenshots2/section_north.png" alt="North-facing section">
-  </div>
-
-  <p class="drawings-caption">Site plan · Ground floor · First floor · Second floor · Sectional perspective · West section · North section</p>
-</section>
-
-<!-- ── ELEVATIONS ── -->
-<section class="gallery-section">
-  <div class="gallery-header">
-    <p class="section-label">Technical Drawings</p>
-    <h2 class="section-title">Elevations</h2>
-  </div>
-
-  <div class="gallery-full">
-    <img src="screenshots2/Screenshot 2026-05-31 154339.png" alt="South elevation" style="height:380px;object-fit:contain;background:#1a1a1a;">
-  </div>
-  <div class="gallery-pair">
-    <img src="screenshots2/Screenshot 2026-05-31 154345.png" alt="East elevation" style="object-fit:contain;background:#1a1a1a;">
-    <img src="screenshots2/Screenshot 2026-05-31 154231.png" alt="Additional elevation" style="object-fit:contain;background:#1a1a1a;">
-  </div>
-
-  <p class="gallery-caption">South elevation · East elevation</p>
-</section>
-
-<!-- ── PROCESS ── -->
-<section class="section concept-section">
-  <p class="section-label">Process</p>
-  <h2 class="section-title">Site &amp; Development</h2>
-
-  <div class="concept-images" style="grid-template-columns: repeat(4,1fr); gap: 12px;">
-    <img src="screenshots/process_01-23.png" alt="Process 01" style="aspect-ratio:1; grid-column:auto;">
-    <img src="screenshots/process_02-25.png" alt="Process 02" style="aspect-ratio:1; grid-column:auto;">
-    <img src="screenshots/process_03-30.png" alt="Process 03" style="aspect-ratio:1; grid-column:auto;">
-    <img src="screenshots/process_04-33.png" alt="Process 04" style="aspect-ratio:1; grid-column:auto;">
+  <!-- Stage 03 - full width -->
+  <div class="process-stage">
+    <div class="process-stage-header">
+      <span class="process-num">03</span>
+      <span class="process-stage-name">What Changed, and Why</span>
+    </div>
+    <p class="process-text">An earlier iteration organised the same programme as a straight linear sequence, with a corridor running the length of the southern face - more overtly ship-like, three smokestacks, a covered nose balcony. In practice the linearity worked against it: galleries were isolated, visitors had no reason to move through the building. The berm concept replaced the linear sequence with a loop, compressing the form. Two of the three smokestacks carried across.</p>
+    <div class="process-pair">
+      <img src="meridian-imgs/design-prog.jpg" alt="Design progression - massing iterations" class="proc-img-sq">
+      <img src="meridian-imgs/axo-process-diagram.jpg" alt="Axonometric process diagram" class="proc-img-sq">
+    </div>
   </div>
 </section>
 
-<!-- ── MATERIALS ── -->
+<!-- MATERIALS -->
 <section class="section materials-section">
   <p class="section-label">Materials</p>
   <h2 class="section-title">Palette</h2>
 
   <div class="materials-grid">
     <div class="material-card">
-      <img src="screenshots/mat_corten.png" alt="Corten steel">
+      <img src="meridian-imgs/mat-corten.jpg" alt="Corten steel">
       <div class="material-card-label">Corten Steel</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_ggbs.png" alt="GGBS concrete">
+      <img src="meridian-imgs/mat-concrete.jpg" alt="GGBS concrete">
       <div class="material-card-label">GGBS Concrete</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_decking.png" alt="Timber decking">
-      <div class="material-card-label">Timber Decking</div>
+      <img src="meridian-imgs/mat-metal.jpg" alt="Dark corrugated metal">
+      <div class="material-card-label">Dark Corrugated Metal</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_green.png" alt="Green roof">
-      <div class="material-card-label">Green Roof</div>
+      <img src="meridian-imgs/mat-darkwood.jpg" alt="Dark stained timber">
+      <div class="material-card-label">Dark Stained Timber</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_timber_d.png" alt="Dark timber">
-      <div class="material-card-label">Dark Timber</div>
+      <img src="meridian-imgs/mat-green-paint.jpg" alt="Deep slate green paint">
+      <div class="material-card-label">Deep Slate Green Paint</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_timber_l.png" alt="Light timber">
-      <div class="material-card-label">Light Timber</div>
+      <img src="meridian-imgs/mat-timber.jpg" alt="Light timber panelling">
+      <div class="material-card-label">Light Timber Panelling</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_polished.png" alt="Polished concrete">
+      <img src="meridian-imgs/mat-horizontal-timber.jpg" alt="Light timber decking">
+      <div class="material-card-label">Light Timber Decking</div>
+    </div>
+    <div class="material-card">
+      <img src="meridian-imgs/mat-aggregate.jpg" alt="Polished concrete">
       <div class="material-card-label">Polished Concrete</div>
     </div>
     <div class="material-card">
-      <img src="screenshots/mat_soffit.png" alt="Soffit finish">
-      <div class="material-card-label">Exposed Soffit</div>
+      <img src="meridian-imgs/mat-vaulted-concrete.jpg" alt="Exposed GGBS concrete soffit">
+      <div class="material-card-label">Exposed GGBS Concrete Soffit</div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- TECHNICAL DRAWINGS -->
+<section class="drawings-section">
+  <div class="drawings-header">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Drawings</h2>
+  </div>
+
+  <!-- Site Plan -->
+  <div class="drawing-group">
+    <p class="drawing-group-label">Site Plan &nbsp;·&nbsp; 1:500</p>
+    <div style="max-width: 68%; margin: 0 auto;">
+      <img src="meridian-imgs/siteplan.jpg" alt="Site plan 1:500" class="siteplan-img">
+    </div>
+  </div>
+
+  <!-- Floor Plans -->
+  <div class="drawing-group">
+    <p class="drawing-group-label">Floor Plans &nbsp;·&nbsp; 1:100 / 1:50</p>
+    <div class="plans-grid">
+      <div class="plan-item">
+        <img src="meridian-imgs/OldPortsv2fp1.png" alt="Ground floor plan 1:100" class="plan-img" style="aspect-ratio:3/2;">
+        <p class="plan-label">Ground Floor 1:100</p>
+      </div>
+      <div class="plan-item">
+        <img src="meridian-imgs/fp-first.jpg" alt="First floor plan 1:100" class="plan-img" style="aspect-ratio:3/2;">
+        <p class="plan-label">First Floor 1:100</p>
+      </div>
+      <div class="plan-item">
+        <img src="meridian-imgs/fp-second.jpg" alt="Second floor plan 1:100" class="plan-img" style="aspect-ratio:3/2;">
+        <p class="plan-label">Second Floor 1:100</p>
+      </div>
+      <div class="plan-item">
+        <img src="meridian-imgs/fp-dwelling.jpg" alt="Dwelling floor plan 1:50" class="plan-img" style="aspect-ratio:3/2;">
+        <p class="plan-label">Dwelling Plan 1:50</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sections -->
+  <div class="drawing-group">
+    <p class="drawing-group-label">Sections &nbsp;·&nbsp; 1:100</p>
+    <div class="drawing-full">
+      <img src="meridian-imgs/section-persp.jpg" alt="West-facing sectional perspective" class="section-persp-img">
+    </div>
+    <p class="plan-label" style="padding: 10px 48px 20px;">West-facing Sectional Perspective (annotated)</p>
+    <div class="plans-grid">
+      <div class="plan-item">
+        <img src="meridian-imgs/section-west.jpg" alt="Section B - West-facing 1:100" class="section-pair-img">
+        <p class="plan-label">Section B - West-facing</p>
+      </div>
+      <div class="plan-item">
+        <img src="meridian-imgs/section-north.jpg" alt="Section A - North-facing 1:100" class="section-pair-img">
+        <p class="plan-label">Section A - North-facing</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elevations -->
+  <div class="drawing-group">
+    <p class="drawing-group-label">Elevations &nbsp;·&nbsp; 1:100</p>
+    <div class="elev-pair">
+      <div class="plan-item">
+        <img src="meridian-imgs/elev-south.jpg" alt="South elevation 1:100" class="elev-img">
+        <p class="plan-label">South Elevation</p>
+      </div>
+      <div class="plan-item">
+        <img src="meridian-imgs/elev-east.jpg" alt="East elevation 1:100" class="elev-img">
+        <p class="plan-label">East Elevation</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axo + Detail -->
+  <div class="drawing-group">
+    <p class="drawing-group-label">Axonometric &amp; Detail</p>
+    <div style="max-width: 72%; margin: 0 auto;">
+      <div class="axo-detail-pair">
+        <div class="axo-col">
+          <img src="meridian-imgs/exploded-axo.jpg" alt="Exploded axonometric" class="portrait-drawing-img">
+          <p class="plan-label" style="padding: 10px 0 0;">Exploded Axonometric</p>
+        </div>
+        <div class="detail-col">
+          <img src="meridian-imgs/detail-window.jpg" alt="First floor window junction detail 1:20" class="portrait-drawing-img">
+          <p class="plan-label" style="padding: 10px 0 0;">Window Junction Detail 1:20</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- EXTERIOR RENDERS -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">Visualisations</p>
+    <h2 class="section-title">Exterior</h2>
+  </div>
+  <div class="gallery-full">
+    <img src="meridian-imgs/waterfront.jpg" alt="Waterfront elevation render" class="render-hero-img">
+  </div>
+  <p class="gallery-caption">Waterfront Elevation</p>
+  <div class="gallery-full" style="margin-top: 3px;">
+    <img src="meridian-imgs/amphitheatre.jpg" alt="Public realm and amphitheatre" class="render-hero-img">
+  </div>
+  <p class="gallery-caption">Public Realm and Amphitheatre</p>
+</section>
+
+<!-- INTERIOR RENDERS -->
+<section class="gallery-section" style="padding-top: 0;">
+  <div class="gallery-header" style="padding-top: 64px;">
+    <p class="section-label">Visualisations</p>
+    <h2 class="section-title">Interior</h2>
+  </div>
+  <div class="gallery-full">
+    <img src="meridian-imgs/cafe.jpg" alt="Cafe and atrium" class="render-hero-img">
+  </div>
+  <p class="gallery-caption">Cafe and Atrium</p>
+  <div class="render-grid" style="margin-top:3px;">
+    <div><img src="meridian-imgs/workshop.jpg" alt="Workshop and dock" class="render-grid-img"><p class="render-id">Workshop and Dock</p></div>
+    <div><img src="meridian-imgs/foyer.jpg" alt="Foyer and galleries" class="render-grid-img"><p class="render-id">Foyer and Galleries</p></div>
+    <div><img src="meridian-imgs/restaurant.jpg" alt="Restaurant" class="render-grid-img"><p class="render-id">Restaurant</p></div>
+    <div><img src="meridian-imgs/office.jpg" alt="Office space" class="render-grid-img"><p class="render-id">Office Space</p></div>
+    <div><img src="meridian-imgs/theatre.jpg" alt="Lecture theatre" class="render-grid-img"><p class="render-id">Lecture Theatre</p></div>
+    <div><img src="meridian-imgs/apartment.jpg" alt="Residential apartment" class="render-grid-img"><p class="render-id">Residential Apartment</p></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<script>
+  function lbOpen(img) {
+    document.getElementById('lb-img').src = img.src;
+    // Find nearest caption text
+    var cap = img.nextElementSibling;
+    if (!cap || !cap.textContent.trim()) {
+      var parSib = img.parentElement && img.parentElement.nextElementSibling;
+      cap = (parSib && !parSib.querySelector('img')) ? parSib : null;
+    }
+    document.getElementById('lb-cap').textContent = (cap && cap.textContent.trim()) ? cap.textContent.trim() : img.alt;
+    document.getElementById('lb').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    document.getElementById('lb').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') lbClose(); });
+  document.querySelectorAll('.drawings-section img, .axo-section img, .gallery-section img, .concept-section img').forEach(function(img) {
+    img.classList.add('lb-trigger');
+    img.addEventListener('click', function() { lbOpen(this); });
+  });
+</script>
+
 <footer>
   <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
-  <a href="index.html">← Back to Portfolio</a>
+  <a href="index.html">Back to Portfolio</a>
 </footer>
 
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Old Portsmouth Masterplan — Conrad Tebje</title>
+  <title>The Archive in the Urban Village - Conrad Tebje</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,6 +12,7 @@
       --green:        #1e3d28;
       --green-mid:    #2d5436;
       --green-light:  #4a7a5a;
+      --green-pale:   #d6e8db;
       --rust:         #a85c1a;
       --rust-light:   #c97a3a;
       --white:        #f6f4ef;
@@ -33,7 +34,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -69,9 +70,9 @@
       text-transform: uppercase;
     }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .project-hero {
-      min-height: 70vh;
+      min-height: 85vh;
       background: var(--green);
       display: flex;
       flex-direction: column;
@@ -98,7 +99,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.3;
+      opacity: 0.4;
     }
 
     .project-hero-content {
@@ -145,19 +146,23 @@
       flex-direction: column;
       gap: 4px;
     }
+
     .meta-item span:first-child {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.4);
     }
+
     .meta-item span:last-child {
       font-size: 14px;
       color: rgba(255,255,255,0.85);
     }
 
-    /* ─── SHARED ─── */
-    .section { padding: 80px 48px; }
+    /* SHARED */
+    .section {
+      padding: 80px 48px;
+    }
 
     .section-label {
       font-size: 10px;
@@ -187,7 +192,7 @@
       color: var(--dark);
     }
 
-    /* ─── OVERVIEW ─── */
+    /* OVERVIEW */
     .overview-section { background: white; }
 
     .overview-grid {
@@ -204,15 +209,34 @@
       margin-bottom: 20px;
     }
 
+    .overview-text a {
+      color: var(--green-mid);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .overview-text a:hover { color: var(--green); }
+
     .overview-text p:first-of-type {
       font-size: 17px;
       color: var(--dark);
+      font-weight: 400;
       line-height: 1.7;
+    }
+
+    .group-note {
+      font-size: 12px;
+      color: var(--light-text);
+      font-style: italic;
+      border-left: 2px solid var(--grey-mid);
+      padding-left: 14px;
+      line-height: 1.7;
+      margin-top: 28px;
     }
 
     .project-facts {
       display: flex;
       flex-direction: column;
+      gap: 0;
       border: 1px solid var(--grey);
       border-radius: 4px;
       overflow: hidden;
@@ -236,11 +260,18 @@
       font-weight: 500;
       white-space: nowrap;
     }
+
     .fact-row dd {
       font-size: 13px;
       color: var(--dark);
       text-align: right;
       line-height: 1.4;
+    }
+
+    .fact-row dd a {
+      color: var(--green-mid);
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     .tags-row {
@@ -261,144 +292,120 @@
       border-radius: 2px;
     }
 
-    /* ─── ANALYSIS BOARDS ─── */
-    .boards-section {
-      background: var(--dark);
-      padding: 80px 0;
-    }
+    /* CONCEPT SECTION */
+    .concept-section { background: white; }
 
-    .boards-section .boards-header {
-      padding: 0 48px;
-      margin-bottom: 40px;
-    }
-
-    .boards-section .section-label {
-      color: rgba(255,255,255,0.4);
-    }
-    .boards-section .section-label::before { background: rgba(255,255,255,0.4); }
-    .boards-section h2.section-title { color: white; }
-
-    .boards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px;
-    }
-
-    .boards-grid img {
-      width: 100%;
-      display: block;
-    }
-
-    .boards-grid img.full-width {
-      grid-column: span 2;
-    }
-
-    /* ─── CONTEXT ─── */
-    .context-section { background: var(--grey); }
-
-    .context-grid {
+    .concept-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: start;
     }
 
-    .context-text p {
+    .concept-text p {
       font-size: 14px;
       line-height: 1.85;
       color: var(--mid);
       margin-bottom: 18px;
     }
 
-    .removals-list {
-      background: white;
-      border-radius: 4px;
-      padding: 24px;
-      border-left: 3px solid var(--rust);
+    /* DRAWINGS (dark bg) */
+    .drawings-section {
+      background: var(--dark);
+      padding: 80px 0;
     }
 
-    .removals-list h4 {
-      font-size: 10px;
-      letter-spacing: 0.2em;
+    .drawings-section .drawings-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .drawings-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+    .drawings-section .section-label::before {
+      background: rgba(255,255,255,0.4);
+    }
+    .drawings-section h2.section-title {
+      color: white;
+      margin-bottom: 0;
+    }
+
+    .drawing-full img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      background: var(--dark);
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .plan-item { background: var(--dark); }
+
+    .plan-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: 16px;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 20px 16px;
     }
 
-    .removals-list ul {
-      list-style: none;
+    .drawings-caption {
+      padding: 16px 48px 0;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .removals-list li {
-      font-size: 13px;
-      color: var(--mid);
-      padding: 7px 0;
-      border-bottom: 1px solid var(--grey);
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
+    /* GALLERY (light bg) */
+    .gallery-section {
+      background: var(--grey);
+      padding: 80px 0;
     }
-    .removals-list li:last-child { border-bottom: none; }
-    .removals-list li::before {
-      content: '—';
-      color: var(--rust);
+
+    .gallery-section .gallery-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .gallery-section .section-label { color: var(--green-mid); }
+    .gallery-section h2.section-title { color: var(--dark); margin-bottom: 0; }
+
+    .gallery-full img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 12px 48px 0;
       font-size: 12px;
-      flex-shrink: 0;
+      color: var(--light-text);
+      font-style: italic;
+      letter-spacing: 0.04em;
     }
 
-    .proposed-list {
-      background: white;
-      border-radius: 4px;
-      padding: 24px;
-      border-left: 3px solid var(--green-mid);
-      margin-top: 20px;
-    }
-
-    .proposed-list h4 {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: 16px;
-    }
-
-    .proposed-list ul { list-style: none; }
-
-    .proposed-list li {
-      font-size: 13px;
-      color: var(--mid);
-      padding: 7px 0;
-      border-bottom: 1px solid var(--grey);
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .proposed-list li:last-child { border-bottom: none; }
-    .proposed-list li::before {
-      content: '+';
-      color: var(--green-mid);
-      font-size: 13px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    /* ─── LINK TO MERIDIAN ─── */
+    /* LINK TO MERIDIAN */
     .link-section {
       background: var(--green);
-      padding: 60px 48px;
+      padding: 72px 48px;
       text-align: center;
     }
 
-    .link-section p.section-label {
+    .link-section .section-label {
       color: var(--rust-light);
       justify-content: center;
     }
-    .link-section p.section-label::before { background: var(--rust-light); }
+    .link-section .section-label::before { background: var(--rust-light); }
 
     .link-section h2 {
       font-size: clamp(22px, 2.5vw, 32px);
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 16px;
     }
@@ -408,12 +415,12 @@
       color: rgba(255,255,255,0.6);
       max-width: 480px;
       margin: 0 auto 32px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 26px;
+      padding: 13px 28px;
       font-size: 12px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -426,7 +433,91 @@
     }
     .btn:hover { background: var(--rust-light); }
 
-    /* ─── FOOTER ─── */
+    /* LIGHTBOX */
+    .lb-trigger { cursor: zoom-in; }
+
+    #lb {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,10,10,0.96);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    #lb-img {
+      max-height: 88vh; max-width: 92vw;
+      object-fit: contain;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.7);
+    }
+    #lb-cap {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 30px; line-height: 1;
+      cursor: pointer; font-family: inherit;
+      transition: color 0.15s;
+    }
+    #lb-close:hover { color: white; }
+
+    /* UNIFORM IMAGE SIZING */
+    .map-pair-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .map-sq-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .strip-img {
+      width: 100%; aspect-ratio: 4/1;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .demo-strip-img {
+      width: 100%; aspect-ratio: 5/1;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .masterplan-img {
+      width: 100%; aspect-ratio: 3/2;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+    .render-wide-img {
+      width: 100%; aspect-ratio: 12/5;
+      object-fit: cover; display: block;
+    }
+    .render-hero-img {
+      width: 100%; aspect-ratio: 2/1;
+      object-fit: cover; display: block;
+    }
+    .model-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+    }
+    .model-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .concept-flood-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+    }
+    .design-board-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: contain; background: var(--grey); display: block;
+    }
+    .heights-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: contain; background: var(--dark); display: block;
+    }
+
+    /* FOOTER */
     footer {
       background: var(--green);
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -452,38 +543,42 @@
     }
     footer a:hover { color: white; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .project-hero { padding: 56px 24px 48px; }
       .section { padding: 56px 24px; }
-      .boards-section .boards-header { padding: 0 24px; }
-      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
-      .context-grid { grid-template-columns: 1fr; gap: 40px; }
+      .drawings-section .drawings-header { padding: 0 24px; }
+      .drawings-caption { padding: 12px 24px 0; }
+      .gallery-section .gallery-header { padding: 0 24px; }
+      .gallery-caption { padding: 10px 24px 0; }
       .link-section { padding: 48px 24px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .model-grid-3 { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 600px) {
-      .boards-grid { grid-template-columns: 1fr; }
-      .boards-grid img.full-width { grid-column: span 1; }
+      .model-grid-3 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-back">Portfolio</a>
   <a href="index.html" class="nav-logo">Conrad Tebje</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="project-hero">
-  <img class="hero-bg-img" src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth Masterplan">
+  <img class="hero-bg-img" src="oldports-imgs/masterplan-aerial.jpg" alt="Old Portsmouth Masterplan aerial">
   <div class="project-hero-content">
-    <p class="project-tag">Major Project — Phase 1 &nbsp;·&nbsp; Team Masterplan &nbsp;·&nbsp; March 2026</p>
-    <h1>Old Portsmouth<br>Masterplan</h1>
+    <p class="project-tag">Major Project &nbsp;·&nbsp; Phase 1 &nbsp;·&nbsp; Team Masterplan</p>
+    <h1>The Archive in<br>the Urban Village</h1>
     <div class="project-hero-meta">
       <div class="meta-item">
         <span>Location</span>
@@ -494,8 +589,8 @@
         <span>2026</span>
       </div>
       <div class="meta-item">
-        <span>Role</span>
-        <span>Team Lead</span>
+        <span>RIBA Stages</span>
+        <span>0 - 1</span>
       </div>
       <div class="meta-item">
         <span>Type</span>
@@ -505,37 +600,39 @@
   </div>
 </section>
 
-<!-- ── OVERVIEW ── -->
+<!-- OVERVIEW -->
 <section class="section overview-section">
   <div class="overview-grid">
 
     <div class="overview-text">
       <p class="section-label">Overview</p>
       <p>
-        Phase 1 of the major project, completed as a group exercise. Conrad interpreted the
-        brief, organised the team's workflow, and guided key design decisions across a
-        masterplan for Old Portsmouth — the historic southern tip of Portsea Island, where
-        the city's naval heritage meets a largely inaccessible waterfront.
+        Phase 1 of the major project, completed as a group of four - Cason Peng, Jess Blackhurst,
+        Eduardo Maldonado, and myself. The project proposes a new urban village on the Old
+        Portsmouth waterfront at Spice Island, centred on research, education, and public life.
       </p>
       <p>
-        The brief was to propose how this stretch of waterfront could be opened up for
-        public use. The team's approach centred on a strategy of selective removal:
-        identifying existing structures that occupied prime waterfront land without
-        contributing public value, and proposing their replacement with a programme
-        of publicly accessible uses.
+        The programme covers a research centre, exhibition and archive space, community centre,
+        market, residential units, and a network of green public space and waterfront walkways.
+        A new pedestrian bridge links the residential areas and research complex, strengthening
+        the connection between the waterfront and the wider city.
       </p>
       <p>
-        The SubseaCraft office building and the Wightlink ferry terminal were identified
-        for removal. In their place, the masterplan proposed a research centre, education
-        facility, gallery, pavilion, market space, social hub, and residential zone —
-        a sequence of uses that would generate activity across the day and evening rather
-        than serving a single purpose.
+        Flood resilience is central to the design. The main green space doubles as a temporary
+        water retention zone, with an adjustable basin to regulate storage during extreme weather.
+        Marine algae cultivation units in the adjacent water body serve wave attenuation, carbon
+        sequestration, and biomass production. At ground floor level, marine grade concrete handles
+        flood exposure; mass timber takes over on upper floors, alongside green roofs throughout.
       </p>
       <p>
-        The masterplan directly shaped the Phase 2 solo building. The site for the
-        Berm/Meridian Building — and its programme of marine research and public use —
-        grew directly out of the Phase 1 analysis and the gap the team identified at
-        The Hard.
+        The proposal directly informed the Phase 2 solo building. The site, programme, and
+        environmental ambition established here became the foundation for the Meridian.
+      </p>
+      <p class="group-note">
+        This page documents group work completed as part of the Major Project brief. My
+        contributions were the conceptual sketches and collage, building heights analysis,
+        materiality strategy, and digital model renders. Other drawings and diagrams are credited
+        to team members in the booklet.
       </p>
     </div>
 
@@ -547,23 +644,31 @@
         </div>
         <div class="fact-row">
           <dt>Phase</dt>
-          <dd>Phase 1 — Team masterplan</dd>
+          <dd>Phase 1 - Team masterplan</dd>
+        </div>
+        <div class="fact-row">
+          <dt>RIBA Stages</dt>
+          <dd>0 - 1</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Team</dt>
+          <dd>Cason Peng, Jess Blackhurst,<br>Eduardo Maldonado, Conrad Tebje</dd>
+        </div>
+        <div class="fact-row">
+          <dt>My Role</dt>
+          <dd>Concept sketches, materiality strategy, building heights analysis, digital renders</dd>
+        </div>
+        <div class="fact-row">
+          <dt>Software</dt>
+          <dd>SketchUp, Lumion, Adobe Suite</dd>
         </div>
         <div class="fact-row">
           <dt>Year</dt>
-          <dd>March 2026</dd>
+          <dd>2026</dd>
         </div>
         <div class="fact-row">
-          <dt>Role</dt>
-          <dd>Team lead — brief interpretation, workflow, design decisions</dd>
-        </div>
-        <div class="fact-row">
-          <dt>Output</dt>
-          <dd>Urban masterplan with site analysis, removals strategy, programme proposals</dd>
-        </div>
-        <div class="fact-row">
-          <dt>Relation to Phase 2</dt>
-          <dd>Directly informed Berm/Meridian Building site and programme</dd>
+          <dt>Phase 2</dt>
+          <dd><a href="meridian.html">The Berm / Meridian Building →</a></dd>
         </div>
       </dl>
       <div class="tags-row">
@@ -573,96 +678,225 @@
         <span class="tag">Team Project</span>
         <span class="tag">Public Realm</span>
         <span class="tag">Portsmouth</span>
+        <span class="tag">Flood Strategy</span>
       </div>
     </div>
 
   </div>
+
+  <p style="font-size:14px;line-height:1.85;color:var(--mid);border-top:1px solid var(--grey);padding-top:28px;margin-top:40px;">
+    This project was about zooming out - moving from a single building to an urban scale, and
+    from working alone to leading a group. I took on an organising role: assigning team members
+    to different aspects of the masterplan, keeping ideas cohesive, making sure everything
+    meshed. It was the first time I had the opportunity to work on both a building and its
+    surrounding context together, thinking about a project's place in a wider urban fabric
+    rather than treating it as an isolated object. I developed significantly as a collaborator
+    and leader through it, and it gave me a much broader sense of what architecture can do
+    at scale.
+  </p>
 </section>
 
-<!-- ── CONTEXT ── -->
-<section class="section context-section">
-  <div class="context-grid">
+<!-- CONCEPT & NARRATIVE -->
+<section class="section concept-section">
+  <div class="concept-grid">
 
-    <div class="context-text">
-      <p class="section-label">Masterplan Strategy</p>
-      <h2 class="section-title">Selective Removal</h2>
+    <div class="concept-text">
+      <p class="section-label">Concept &amp; Narrative</p>
+      <h2 class="section-title">Past and Future</h2>
       <p>
-        The masterplan's central argument was that Old Portsmouth's waterfront had been
-        colonised by uses that turned their back on the public: a ferry terminal organised
-        for vehicle throughput, an office building claiming a prominent waterfront corner.
-        Removing these created the land necessary to build something the city could use.
+        The historic dockyard is like a machine that breeds machines - a place where function
+        is paramount, where Portsmouth's relationship with the ocean was always one of extraction
+        and warfare. We take pride in what came out of that place, but that is not where our
+        pride in the ocean should stop.
       </p>
       <p>
-        Proposed uses were selected to run across the full day — market and pavilion
-        activity during the day, restaurant and social hub in the evening, residential
-        providing presence at night. The waterfront needed to feel inhabited rather than
-        transitional.
+        The project's central image is a sapling growing from the centre of The Point, roots
+        spreading toward the sea. Lord Nelson and the battleship are still there - the military
+        presence, the memorials - but something new is growing from the same ground. The water
+        flooding the square represents both the risk of rising sea levels and Portsmouth's
+        deep, ongoing link with the sea.
       </p>
       <p>
-        The team's analysis boards covered site access and movement, flood risk, heritage
-        designations, views, transport connections, and existing building condition. These
-        directly informed which removals were viable and which sites should be built on first.
+        Where the dockyard found conflict in the past, this village finds hope in the future.
+        The aim is an antithesis to the dockyard: somewhere that treats the ocean not as
+        something to be taken advantage of, but as something to be worked with, understood,
+        and enjoyed. Research, education, and public enrichment in place of uniformity and
+        militaristic function.
       </p>
     </div>
 
     <div>
-      <div class="removals-list">
-        <h4>Proposed Removals</h4>
-        <ul>
-          <li>SubseaCraft office building</li>
-          <li>Wightlink ferry terminal</li>
-        </ul>
-      </div>
-      <div class="proposed-list">
-        <h4>Proposed Programme</h4>
-        <ul>
-          <li>Research centre</li>
-          <li>Education facility</li>
-          <li>Gallery</li>
-          <li>Pavilion</li>
-          <li>Market space</li>
-          <li>Social hub</li>
-          <li>Residential zone</li>
-        </ul>
-      </div>
+      <img src="oldports-imgs/concept-design-board.jpg" alt="Concept design board" class="design-board-img">
     </div>
 
   </div>
 </section>
 
-<!-- ── ANALYSIS BOARDS ── -->
-<section class="boards-section">
-  <div class="boards-header">
-    <p class="section-label">Analysis</p>
-    <h2 class="section-title">Site Documentation</h2>
+<!-- CONCEPT RENDER - FULL WIDTH -->
+<section class="drawings-section" style="padding: 0;">
+  <div class="drawing-full">
+    <img src="oldports-imgs/concept-render-flood.jpg" alt="Concept collage - Portsmouth waterfront narrative" class="concept-flood-img">
+  </div>
+  <p class="drawings-caption" style="padding: 16px 48px;">Narrative Collage - Military Past / Environmental Future</p>
+</section>
+
+<!-- MASTERPLAN -->
+<section class="drawings-section">
+  <div class="drawings-header">
+    <p class="section-label">Masterplan</p>
+    <h2 class="section-title">Proposed Masterplan</h2>
   </div>
 
-  <div class="boards-grid">
-    <img class="full-width" src="screenshots/Screenshot 2026-05-31 154129.png" alt="Old Portsmouth analysis boards">
-    <img src="screenshots/Screenshot 2026-05-31 154139.png" alt="Site analysis detail">
-    <img src="screenshots/Screenshot 2026-05-31 154154.png" alt="Further analysis">
-    <img class="full-width" src="screenshots/Screenshot 2026-05-31 154208.png" alt="Masterplan overview">
-    <img src="screenshots/diag_listed.png" alt="Listed buildings diagram">
-    <img src="screenshots/diag_transport.png" alt="Transport diagram">
-    <img class="full-width" src="screenshots/flood_risk.png" alt="Flood risk analysis">
-    <img class="full-width" src="screenshots/process_site_sketch.png" alt="Site sketch">
-    <img src="screenshots/precedent_oslo.png" alt="Oslo precedent">
-    <img src="screenshots/precedent_stavros.png" alt="Stavros Niarchos precedent">
+  <!-- Flood risk + uses + site plan - condensed 3-col -->
+  <div class="model-grid-3">
+    <div class="plan-item">
+      <img src="oldports-imgs/context-map.jpg" alt="Flood risk diagram" class="map-sq-img">
+      <p class="plan-label">Flood Risk</p>
+    </div>
+    <div class="plan-item">
+      <img src="oldports-imgs/zoning-diagram.jpg" alt="Proposed uses - ground floor plan" class="map-sq-img">
+      <p class="plan-label">Proposed Uses</p>
+    </div>
+    <div class="plan-item">
+      <img src="oldports-imgs/analysis-aerial.jpg" alt="Proposed site plan - aerial" class="map-sq-img">
+      <p class="plan-label">Proposed Site Plan</p>
+    </div>
+  </div>
+
+  <!-- Masterplan aerials - condensed pair -->
+  <div class="plans-grid" style="margin-top: 2px;">
+    <div class="plan-item">
+      <img src="oldports-imgs/masterplan-aerial.jpg" alt="Masterplan aerial view" class="masterplan-img">
+      <p class="plan-label">Masterplan Aerial</p>
+    </div>
+    <div class="plan-item">
+      <img src="oldports-imgs/render-aerial.jpg" alt="Aerial masterplan render" class="masterplan-img">
+      <p class="plan-label">Aerial Render</p>
+    </div>
+  </div>
+
+  <!-- Renders pair -->
+  <div class="plans-grid" style="margin-top: 3px;">
+    <div>
+      <img src="oldports-imgs/render-promenade.jpg" alt="Waterfront promenade render" class="render-wide-img">
+      <p class="drawings-caption" style="padding-top:10px;">Waterfront Promenade</p>
+    </div>
+    <div>
+      <img src="oldports-imgs/render-reefs.jpg" alt="Floating reefs render" class="render-wide-img">
+      <p class="drawings-caption" style="padding-top:10px;">Floating Reefs and Canal Edge</p>
+    </div>
   </div>
 </section>
 
-<!-- ── LINK TO MERIDIAN ── -->
+<!-- SECTIONS & ELEVATIONS -->
+<section class="drawings-section" style="padding-top: 0;">
+  <div class="drawings-header" style="padding-top: 64px;">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Sections &amp; Elevations</h2>
+  </div>
+
+  <div class="plans-grid">
+    <div class="plan-item">
+      <img src="oldports-imgs/section-1.jpg" alt="Section elevation 1" class="strip-img">
+      <p class="plan-label">Section A</p>
+    </div>
+    <div class="plan-item">
+      <img src="oldports-imgs/section-2.jpg" alt="Section elevation 2" class="strip-img">
+      <p class="plan-label">Section B</p>
+    </div>
+  </div>
+  <div class="plans-grid" style="margin-top: 2px;">
+    <div class="plan-item">
+      <img src="oldports-imgs/section-3.jpg" alt="Section elevation 3" class="strip-img">
+      <p class="plan-label">Section C</p>
+    </div>
+    <div class="plan-item">
+      <img src="oldports-imgs/section-4.jpg" alt="Section elevation 4" class="strip-img">
+      <p class="plan-label">Section D</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHYSICAL MODEL -->
+<section class="drawings-section" style="padding-top: 0;">
+  <div class="drawings-header" style="padding-top: 64px;">
+    <p class="section-label">Physical Model</p>
+    <h2 class="section-title">Masterplan Model</h2>
+  </div>
+
+  <!-- Overhead + lowangle pair -->
+  <div class="plans-grid">
+    <div>
+      <img src="oldports-imgs/model-overhead.jpg" alt="Model overhead view" class="model-img">
+      <p class="drawings-caption" style="padding-top:10px;">Overhead</p>
+    </div>
+    <div>
+      <img src="oldports-imgs/model-lowangle.jpg" alt="Model low angle view" class="model-img">
+      <p class="drawings-caption" style="padding-top:10px;">Low Angle</p>
+    </div>
+  </div>
+
+  <!-- Three-way: wide + close + sideangle -->
+  <div class="model-grid-3" style="margin-top: 2px;">
+    <div>
+      <img src="oldports-imgs/model-wide.jpg" alt="Model wide view" class="model-img">
+      <p class="drawings-caption" style="padding-top:10px;">Wide View</p>
+    </div>
+    <div>
+      <img src="oldports-imgs/model-close.jpg" alt="Model close-up" class="model-img">
+      <p class="drawings-caption" style="padding-top:10px;">Close Detail</p>
+    </div>
+    <div>
+      <img src="oldports-imgs/model-sideangle.jpg" alt="Model side angle" class="model-img">
+      <p class="drawings-caption" style="padding-top:10px;">Side Angle</p>
+    </div>
+  </div>
+</section>
+
+<!-- LINK TO PHASE 2 -->
 <section class="link-section">
-  <p class="section-label">Part of a Continuous Project</p>
-  <h2>Phase 2: The Berm / Meridian Building</h2>
-  <p class="link-desc">The solo Phase 2 building grew directly from this masterplan. The site, the programme, and the challenge of earning a place on a historically sensitive waterfront all came from the Phase 1 analysis.</p>
-  <a href="meridian.html" class="btn">View the Meridian Building →</a>
+  <p class="section-label">Phase 2</p>
+  <h2>The Berm / Meridian Building</h2>
+  <p class="link-desc">
+    The Meridian Building grew directly from the masterplan - taking the site, programme,
+    and civic ambition of Phase 1 and resolving it at architectural scale.
+  </p>
+  <a href="meridian.html" class="btn">View Phase 2 Project</a>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- LIGHTBOX -->
+<div id="lb" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<script>
+  function lbOpen(img) {
+    document.getElementById('lb-img').src = img.src;
+    var cap = img.nextElementSibling;
+    if (!cap || !cap.textContent.trim()) {
+      var parSib = img.parentElement && img.parentElement.nextElementSibling;
+      cap = (parSib && !parSib.querySelector('img')) ? parSib : null;
+    }
+    document.getElementById('lb-cap').textContent = (cap && cap.textContent.trim()) ? cap.textContent.trim() : img.alt;
+    document.getElementById('lb').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    document.getElementById('lb').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') lbClose(); });
+  document.querySelectorAll('.drawings-section img, .gallery-section img, .concept-section img').forEach(function(img) {
+    img.classList.add('lb-trigger');
+    img.addEventListener('click', function() { lbOpen(this); });
+  });
+</script>
+
 <footer>
   <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
-  <a href="index.html">← Back to Portfolio</a>
+  <a href="index.html">Back to Portfolio</a>
 </footer>
 
 </body>

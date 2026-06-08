@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barnsbury Park Nursery — Conrad Tebje</title>
+  <title>Barnsbury Park Nursery - Conrad Tebje</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -70,10 +70,10 @@
       text-transform: uppercase;
     }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .project-hero {
-      min-height: 70vh;
-      background: var(--green);
+      min-height: 85vh;
+      background: var(--dark);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -82,24 +82,13 @@
       overflow: hidden;
     }
 
-    .project-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
     .hero-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.35;
+      opacity: 0.4;
     }
 
     .project-hero-content {
@@ -146,18 +135,20 @@
       flex-direction: column;
       gap: 4px;
     }
+
     .meta-item span:first-child {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.4);
     }
+
     .meta-item span:last-child {
       font-size: 14px;
       color: rgba(255,255,255,0.85);
     }
 
-    /* ─── SHARED ─── */
+    /* SHARED */
     .section { padding: 80px 48px; }
 
     .section-label {
@@ -188,7 +179,7 @@
       color: var(--dark);
     }
 
-    /* ─── OVERVIEW ─── */
+    /* OVERVIEW */
     .overview-section { background: white; }
 
     .overview-grid {
@@ -208,12 +199,14 @@
     .overview-text p:first-of-type {
       font-size: 17px;
       color: var(--dark);
+      font-weight: 400;
       line-height: 1.7;
     }
 
     .project-facts {
       display: flex;
       flex-direction: column;
+      gap: 0;
       border: 1px solid var(--grey);
       border-radius: 4px;
       overflow: hidden;
@@ -237,6 +230,7 @@
       font-weight: 500;
       white-space: nowrap;
     }
+
     .fact-row dd {
       font-size: 13px;
       color: var(--dark);
@@ -262,72 +256,275 @@
       border-radius: 2px;
     }
 
-    /* ─── PDF PAGES / GALLERY ─── */
-    .pages-section {
+    /* CONCEPT SECTION */
+    .concept-section { background: white; border-top: 1px solid var(--grey); }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .concept-text p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 18px;
+    }
+
+    .concept-text p:first-of-type {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.75;
+    }
+
+    .precedent-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .precedent-item {
+      padding: 12px 16px;
+      background: var(--grey);
+      border-left: 3px solid var(--green-mid);
+      border-radius: 2px;
+    }
+
+    .precedent-item h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .precedent-item p {
+      font-size: 11px;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* DESIGN PROGRESSION */
+    .process-section {
+      background: var(--grey);
+      padding: 80px 48px;
+    }
+
+    .process-section .section-label { color: var(--green-mid); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    .process-stage {
+      border-top: 1px solid var(--grey-mid);
+      padding-top: 24px;
+    }
+
+    .process-stage-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .process-stage p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--mid);
+      margin-bottom: 14px;
+    }
+
+    .process-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: white;
+      display: block;
+    }
+
+    /* DRAWINGS (dark bg) */
+    .drawings-section {
       background: var(--dark);
       padding: 80px 0;
     }
 
-    .pages-section .pages-header {
+    .drawings-section .drawings-header {
       padding: 0 48px;
       margin-bottom: 40px;
     }
 
-    .pages-section .section-label {
-      color: rgba(255,255,255,0.4);
-    }
-    .pages-section .section-label::before { background: rgba(255,255,255,0.4); }
-    .pages-section h2.section-title { color: white; }
+    .drawings-section .section-label { color: rgba(255,255,255,0.4); }
+    .drawings-section .section-label::before { background: rgba(255,255,255,0.4); }
+    .drawings-section h2.section-title { color: white; margin-bottom: 0; }
 
-    .pages-grid {
+    .drawing-group {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .drawing-group:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .drawing-group-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+      padding: 0 48px 24px;
+      display: block;
+    }
+
+    .plan-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 20px 16px;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .plan-item { background: var(--dark); }
+
+    .fp-img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .section-img {
+      width: 100%;
+      aspect-ratio: 16/5;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .elev-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    .axo-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      background: var(--dark);
+      display: block;
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      background: var(--grey);
+      padding: 80px 0;
+    }
+
+    .gallery-section .gallery-header {
+      padding: 0 48px;
+      margin-bottom: 40px;
+    }
+
+    .gallery-section .section-label { color: var(--green-mid); }
+    .gallery-section h2.section-title { color: var(--dark); margin-bottom: 0; }
+
+    .render-full img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      display: block;
+    }
+
+    .renders-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3px;
     }
 
-    .pages-grid img {
+    .renders-pair img {
       width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
       display: block;
     }
 
-    .pages-grid img.full-width {
-      grid-column: span 2;
-    }
-
-    /* ─── DESIGN FEATURES ─── */
-    .features-section { background: var(--grey); }
-
-    .features-grid {
+    .renders-trio {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 3px;
     }
 
-    .feature-item {
-      background: white;
-      border-radius: 4px;
-      overflow: hidden;
+    .renders-trio img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
     }
 
-    .feature-item-text {
-      padding: 20px 22px 24px;
+    .gallery-caption {
+      padding: 12px 48px 0;
+      font-size: 12px;
+      color: var(--light-text);
+      font-style: italic;
+      letter-spacing: 0.04em;
     }
 
-    .feature-item-text h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
+    /* LIGHTBOX */
+    .lb-trigger { cursor: zoom-in; }
 
-    .feature-item-text p {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.65;
+    #lb {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,10,10,0.96);
+      align-items: center; justify-content: center;
+      flex-direction: column;
     }
+    #lb-img {
+      max-height: 88vh; max-width: 92vw;
+      object-fit: contain;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.7);
+    }
+    #lb-cap {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 30px; line-height: 1;
+      cursor: pointer; font-family: inherit;
+      transition: color 0.15s;
+    }
+    #lb-close:hover { color: white; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       background: var(--green);
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -353,85 +550,95 @@
     }
     footer a:hover { color: white; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .project-hero { padding: 56px 24px 48px; }
       .section { padding: 56px 24px; }
-      .pages-section .pages-header { padding: 0 24px; }
+      .process-section { padding: 56px 24px; }
+      .drawings-section .drawings-header { padding: 0 24px; }
+      .drawing-group-label { padding: 0 24px 20px; }
+      .gallery-section .gallery-header { padding: 0 24px; }
+      .gallery-caption { padding: 10px 24px 0; }
       .overview-grid { grid-template-columns: 1fr; gap: 40px; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .renders-pair { grid-template-columns: 1fr; }
+      .renders-trio { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 600px) {
-      .pages-grid { grid-template-columns: 1fr; }
-      .pages-grid img.full-width { grid-column: span 1; }
-      .features-grid { grid-template-columns: 1fr; }
+      .renders-trio { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-back">Portfolio</a>
   <a href="index.html" class="nav-logo">Conrad Tebje</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="project-hero">
-  <img class="hero-bg-img" src="barnsbury-imgs/page-1.png" alt="Barnsbury Park Nursery">
+  <img class="hero-bg-img" src="barnsbury-imgs/interior-portal.jpg" alt="Barnsbury Park Nursery interior portal">
   <div class="project-hero-content">
-    <p class="project-tag">Nursery Design &nbsp;·&nbsp; November 2024</p>
+    <p class="project-tag">Studio Brief &nbsp;·&nbsp; Individual Project &nbsp;·&nbsp; 2025</p>
     <h1>Barnsbury Park<br>Nursery</h1>
     <div class="project-hero-meta">
       <div class="meta-item">
         <span>Location</span>
-        <span>Barnsbury Park, Eastney, Portsmouth</span>
+        <span>Barnsbury Park, Portsmouth</span>
       </div>
       <div class="meta-item">
         <span>Year</span>
-        <span>2024</span>
+        <span>2025</span>
       </div>
       <div class="meta-item">
         <span>Type</span>
-        <span>Education / Community</span>
+        <span>Education / Early Years</span>
+      </div>
+      <div class="meta-item">
+        <span>RIBA Stages</span>
+        <span>2 - 3</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── OVERVIEW ── -->
+<!-- OVERVIEW -->
 <section class="section overview-section">
   <div class="overview-grid">
 
     <div class="overview-text">
       <p class="section-label">Overview</p>
       <p>
-        A new nursery within Barnsbury Park, Eastney — a low-rise timber-clad building
-        sized for children rather than adults. The brief demanded spaces that respond to
-        how young children actually move, perceive, and inhabit space, drawing on Montessori
-        and Waldorf Steiner pedagogy as design frameworks.
+        A new-build nursery in Barnsbury Park, Portsmouth, designed around the needs
+        of children from birth through to preschool age. The building is organised
+        across two floors with a central outdoor play area at ground level and a
+        roof terrace above, creating layered spaces for learning, play, and rest.
       </p>
       <p>
-        Three sites within the park were assessed before settling on the northern edge,
-        which offered good access from Eastney Road bus stops, sufficient separation from
-        the odour of the Eastney Pumping Station, and proximity to mature trees providing
-        natural shade and a backdrop to the outdoor play areas.
+        The scheme is informed by Montessori and Waldorf Steiner educational
+        philosophies - both of which emphasise child-led exploration, natural
+        materials, and environments that scale to the child rather than the adult.
+        The building responds to this directly: portholes are set at children's
+        eye level, nooks are sized for small bodies, and the raised platform gives
+        children a sense of ownership over the space.
       </p>
       <p>
-        The building is organised as a low, C-shaped plan with connected rooms flowing
-        into each other rather than separated by closed doors. Rooms are sized and
-        detailed for their specific age group: baby area, nappy change, toddler space,
-        preschooler room. A first-floor outdoor play deck extends the usable area
-        without increasing the footprint.
+        Materials are natural and warm throughout - timber, brick, and plaster in
+        pastel shades that complement rather than compete with the activity inside.
+        Colours are drawn from abstract shapes, giving the interior a sense of play
+        without being prescriptive.
       </p>
       <p>
-        Portholes in the boundary wall are placed at child height, giving children
-        their own relationship with the street. Large indoor-outdoor zones, nooks sized
-        for hiding, and a raised platform within the main play space create spatial variety
-        without ornament.
+        The plan is deliberately open and connected, allowing staff to maintain
+        sight lines across the building while giving each age group - babies,
+        toddlers, preschoolers - their own defined territory within the whole.
       </p>
     </div>
 
@@ -439,19 +646,15 @@
       <dl class="project-facts">
         <div class="fact-row">
           <dt>Location</dt>
-          <dd>Barnsbury Park, Eastney, Portsmouth</dd>
+          <dd>Barnsbury Park, Portsmouth</dd>
         </div>
         <div class="fact-row">
           <dt>Year</dt>
-          <dd>November 2024</dd>
+          <dd>2025</dd>
         </div>
         <div class="fact-row">
           <dt>Programme</dt>
-          <dd>Baby, Toddler &amp; Preschooler areas, Staff facilities, Outdoor play</dd>
-        </div>
-        <div class="fact-row">
-          <dt>Storeys</dt>
-          <dd>Ground + First floor</dd>
+          <dd>Baby, Toddler and Preschooler Areas, Dining, Staff Rooms, Outdoor Play (Ground + Roof)</dd>
         </div>
         <div class="fact-row">
           <dt>Pedagogy</dt>
@@ -461,94 +664,285 @@
           <dt>Software</dt>
           <dd>SketchUp, AutoCAD, Adobe Suite</dd>
         </div>
-        <div class="fact-row">
-          <dt>Site</dt>
-          <dd>Site 3 (north edge, adjacent to Glasgow Road)</dd>
-        </div>
       </dl>
       <div class="tags-row">
         <span class="tag">Education</span>
-        <span class="tag">Community</span>
-        <span class="tag">Child-Centred</span>
-        <span class="tag">Timber</span>
-        <span class="tag">Montessori</span>
-        <span class="tag">Outdoor Play</span>
+        <span class="tag">Early Years</span>
+        <span class="tag">Child-Led</span>
+        <span class="tag">Natural Materials</span>
+        <span class="tag">Courtyard</span>
       </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:14px;line-height:1.85;color:var(--mid);border-top:1px solid var(--grey);padding-top:28px;margin-top:40px;">
+    This was my first real dive into architectural software. Second year was when digital tools
+    were introduced, and I spent a long time learning SketchUp properly - its ins and outs,
+    its limits, what it could do for a project. Beyond the technology, Barnsbury taught me how
+    to respond to a brief creatively: how to meet every requirement while still taking the
+    project somewhere of your own. You can see the precedents I researched genuinely showing
+    through in the design, which felt like a breakthrough - using references not just for
+    inspiration, but as something that actually shapes the outcome.
+  </p>
+</section>
+
+<!-- CONCEPT -->
+<section class="section concept-section">
+  <div class="concept-grid">
+
+    <div class="concept-text">
+      <p class="section-label">Brief and Concept</p>
+      <h2 class="section-title">Designing for Children</h2>
+      <p>
+        The brief asked for a nursery that could serve children across all early years age groups
+        within a Portsmouth site. Three potential locations within Barnsbury Park were assessed -
+        I selected Site 3, the quietest and most sheltered of the three, despite its proximity
+        to a pumping station to the east.
+      </p>
+      <p>
+        The central design question was how to make a building that genuinely belongs to
+        its users. Standard institutional nurseries are designed at adult scale, with child-sized
+        features added as afterthoughts. Here the intent was the reverse: scale the building
+        to the child first, then accommodate the adults within it.
+      </p>
+      <p>
+        Precedent research focused on three kindergarten designs that each resolved this
+        differently - Tezuka Architects' Fuji Kindergarten uses a single looping rooftop
+        track to give children freedom of movement; HIBINOSEKKEI's ATG Kindergarten
+        introduces soft transitions between interior and exterior; and TIANHUA's Shenzhen
+        Nanshan Kindergarten uses colour and form to create a legible landscape of play.
+        Each informed a different aspect of the final design.
+      </p>
+
+      <div class="precedent-list">
+        <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--light-text);font-weight:500;margin-bottom:4px;">Precedents</p>
+        <div class="precedent-item">
+          <h4>Fuji Kindergarten - Tezuka Architects</h4>
+          <p>Looping rooftop circulation gives children autonomy and continuous movement.</p>
+        </div>
+        <div class="precedent-item">
+          <h4>ATG Kindergarten and Nursery - HIBINOSEKKEI</h4>
+          <p>Soft spatial transitions between inside and outside blur the boundary of play.</p>
+        </div>
+        <div class="precedent-item">
+          <h4>Shenzhen Nanshan Kindergarten - TIANHUA</h4>
+          <p>Colour and abstracted form create a legible landscape of discovery.</p>
+        </div>
+      </div>
+
+      <img class="lb-trigger" src="barnsbury-imgs/site-options.jpg"
+           alt="Site selection options"
+           style="width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--grey);display:block;margin-top:28px;">
+      <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+        Three sites assessed - Site 3 selected
+      </p>
+    </div>
+
+    <div>
+      <img src="barnsbury-imgs/reference.jpg"
+           alt="Kindergarten reference precedent"
+           style="width:100%;display:block;">
+      <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+        Precedent reference - kindergarten architecture
+      </p>
     </div>
 
   </div>
 </section>
 
-<!-- ── DESIGN FEATURES ── -->
-<section class="section features-section">
-  <p class="section-label">Design</p>
-  <h2 class="section-title">Key Features</h2>
+<!-- DESIGN PROGRESSION -->
+<section class="process-section">
+  <p class="section-label">Design Progression</p>
+  <h2 class="section-title" style="color:var(--dark);">From Concept to Final Form</h2>
 
-  <div class="features-grid">
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>Portholes at child height</h3>
-        <p>Circular openings in the boundary wall are positioned for children, not adults — giving children their own view onto the street and a sense of ownership over the threshold.</p>
-      </div>
+  <div class="process-grid">
+
+    <div class="process-stage">
+      <p class="process-stage-label">Stage 01 - Concept and Plan</p>
+      <p>
+        Early design work explored how to organise the three age groups - babies, toddlers,
+        preschoolers - in relation to the site boundary and the outdoor play areas.
+        The ground floor plan was developed iteratively, testing how corridor widths,
+        nook positions, and the central play court worked together.
+      </p>
+      <p>
+        A key early decision was to wrap the building around the outdoor space rather
+        than push it to the back. This keeps the garden central and visible from every
+        major room.
+      </p>
     </div>
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>Connected plan</h3>
-        <p>Rooms flow into each other rather than separating behind closed doors, creating visual communication between spaces and allowing staff to supervise across zones.</p>
-      </div>
+
+    <div class="process-stage">
+      <p class="process-stage-label">Stage 02 - Elevations and Materials</p>
+      <p>
+        With the plan settled, work moved to the elevations and material selection.
+        The porthole windows were introduced as a response to the scale problem:
+        standard windows sit above children's eye line. Portholes set at 600mm gave
+        children an unobstructed view out without compromising the building's
+        structural or thermal performance.
+      </p>
+      <p>
+        The pastel colour palette was applied to the elevation to reinforce the
+        building's identity from the street, using abstract shapes rather than
+        illustrative decoration.
+      </p>
     </div>
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>Nooks and hiding spaces</h3>
-        <p>Scaled for children: arched recesses and low-ceilinged alcoves sized to give a sense of enclosure without the anxiety of full separation from the main space.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>Raised play platform</h3>
-        <p>A change in floor level within the main play area creates opportunity for movement, climbing, and spatial exploration without requiring external equipment.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>First-floor outdoor deck</h3>
-        <p>The upper floor extends into a sheltered outdoor play area, separating age groups and doubling the usable external space without increasing the building's footprint.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-item-text">
-        <h3>Pastel ground plane</h3>
-        <p>Abstract shapes in muted pastels across the outdoor play surface suggest play without prescribing it — an open-ended prompt rather than a fixed activity zone.</p>
-      </div>
-    </div>
+
   </div>
+
+  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+    <img class="lb-trigger" src="barnsbury-imgs/design-prog.jpg"
+         alt="Design progression diagram"
+         style="width:100%;aspect-ratio:5/3;object-fit:contain;background:white;display:block;">
+    <img class="lb-trigger" src="barnsbury-imgs/axo-v1.jpg"
+         alt="Axonometric view 1"
+         style="width:100%;aspect-ratio:5/3;object-fit:contain;background:white;display:block;">
+    <img class="lb-trigger" src="barnsbury-imgs/model-plan.jpg"
+         alt="Model plan view"
+         style="width:100%;aspect-ratio:5/3;object-fit:contain;background:white;display:block;">
+  </div>
+  <p style="font-size:11px;color:var(--light-text);margin-top:10px;font-style:italic;">
+    Design progression, axonometric study, and model plan view
+  </p>
 </section>
 
-<!-- ── PROJECT BOARDS ── -->
-<section class="pages-section">
-  <div class="pages-header">
-    <p class="section-label">Project Boards</p>
-    <h2 class="section-title">Documentation</h2>
+<!-- TECHNICAL DRAWINGS -->
+<section class="drawings-section">
+  <div class="drawings-header">
+    <p class="section-label">Technical Drawings</p>
+    <h2 class="section-title">Final Design</h2>
   </div>
 
-  <div class="pages-grid">
-    <img class="full-width" src="barnsbury-imgs/page-1.png" alt="Cover — Barnsbury Nursery">
-    <img src="barnsbury-imgs/page-2.png" alt="Site Analysis">
-    <img src="barnsbury-imgs/page-3.png" alt="Brief Research">
-    <img src="barnsbury-imgs/page-4.png" alt="Site Selection">
-    <img src="barnsbury-imgs/page-5.png" alt="Design Development">
-    <img class="full-width" src="barnsbury-imgs/page-6.png" alt="Technical Drawings — Sections">
-    <img class="full-width" src="barnsbury-imgs/page-7.png" alt="Technical Drawings — Plans and Elevations">
-    <img class="full-width" src="barnsbury-imgs/page-8.png" alt="Design Features — Exterior">
-    <img class="full-width" src="barnsbury-imgs/page-9.png" alt="Design Features — Interior">
+  <!-- FLOOR PLANS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Floor Plans</span>
+    <div class="plans-grid">
+      <div class="plan-item">
+        <p class="plan-label">Ground Floor</p>
+        <img class="lb-trigger fp-img" src="barnsbury-imgs/fp-ground.jpg" alt="Ground floor plan">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">First Floor</p>
+        <img class="lb-trigger fp-img" src="barnsbury-imgs/fp-first.jpg" alt="First floor plan">
+      </div>
+    </div>
   </div>
+
+  <!-- SECTION -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Section</span>
+    <div style="padding: 0 48px;">
+      <p class="plan-label" style="padding-left:0;">Section A-B</p>
+      <img class="lb-trigger section-img" src="barnsbury-imgs/section.jpg" alt="Section A-B">
+    </div>
+  </div>
+
+  <!-- ELEVATIONS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Elevations</span>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+      <div class="plan-item">
+        <p class="plan-label">South</p>
+        <img class="lb-trigger elev-img" src="barnsbury-imgs/elev-south.jpg" alt="South elevation">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">North</p>
+        <img class="lb-trigger elev-img" src="barnsbury-imgs/elev-north.jpg" alt="North elevation">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">East</p>
+        <img class="lb-trigger elev-img" src="barnsbury-imgs/elev-east.jpg" alt="East elevation">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">West</p>
+        <img class="lb-trigger elev-img" src="barnsbury-imgs/elev-west.jpg" alt="West elevation">
+      </div>
+    </div>
+  </div>
+
+  <!-- AXONOMETRICS -->
+  <div class="drawing-group">
+    <span class="drawing-group-label">Axonometrics</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+      <div class="plan-item">
+        <p class="plan-label">View 1</p>
+        <img class="lb-trigger axo-img" src="barnsbury-imgs/axo-v1.jpg" alt="Axonometric view 1">
+      </div>
+      <div class="plan-item">
+        <p class="plan-label">View 2</p>
+        <img class="lb-trigger axo-img" src="barnsbury-imgs/axo-v2.jpg" alt="Axonometric view 2">
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- RENDERS -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">Renders</p>
+    <h2 class="section-title">Exterior and Interior</h2>
+  </div>
+
+  <div class="render-full">
+    <img class="lb-trigger" src="barnsbury-imgs/exterior-fence.jpg" alt="Exterior porthole fence render">
+  </div>
+  <p class="gallery-caption">Porthole fence detail - windows set at children's eye level.</p>
+
+  <div class="renders-trio" style="margin-top:3px;">
+    <img class="lb-trigger" src="barnsbury-imgs/interior-portal.jpg" alt="Interior arched portal render">
+    <img class="lb-trigger" src="barnsbury-imgs/interior-classroom.jpg" alt="Interior classroom render">
+    <img class="lb-trigger" src="barnsbury-imgs/interior-nook.jpg" alt="Interior nook render">
+  </div>
+  <p class="gallery-caption">Left to right: arched portal, classroom, nook</p>
+
+  <div class="renders-pair" style="margin-top:3px;">
+    <img class="lb-trigger" src="barnsbury-imgs/interior-platform.jpg" alt="Interior raised platform render">
+    <img class="lb-trigger" src="barnsbury-imgs/exterior-roofterrace.jpg" alt="Exterior roof terrace render">
+  </div>
+  <p class="gallery-caption">Left: raised platform. Right: roof terrace outdoor play area.</p>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p>Conrad Tebje &nbsp;·&nbsp; Part I Assistant Architect &nbsp;·&nbsp; 2026</p>
-  <a href="index.html">← Back to Portfolio</a>
+  <p>Conrad Tebje &nbsp;·&nbsp; Architecture Portfolio</p>
+  <a href="index.html">Back to Portfolio</a>
 </footer>
+
+<script>
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-cap');
+
+  function lbOpen(src, cap) {
+    lbImg.src = src;
+    lbCap.textContent = cap || '';
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    lb.style.display = 'none';
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lbClose(); });
+
+  document.querySelectorAll('.drawings-section img, .gallery-section img, .concept-section img, .process-section img').forEach(img => {
+    if (!img.classList.contains('lb-trigger')) return;
+    img.addEventListener('click', () => {
+      lbOpen(img.src, img.alt);
+    });
+  });
+</script>
 
 </body>
 </html>
